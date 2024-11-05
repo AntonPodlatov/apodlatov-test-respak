@@ -1,9 +1,17 @@
 package com.apodlatov.test.respak.data.models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "tt_models")
@@ -39,9 +47,6 @@ public class TechnicsTypeModel {
     @ManyToOne
     @JoinColumn(name = "tt_id")
     private TechnicsType technicsType;
-
-    @OneToMany(mappedBy = "technicsTypeModel", fetch = FetchType.LAZY)
-    private Set<TechnicsTypeModelAttributeValue> attributeValues;
 
     public TechnicsTypeModel() {
     }
@@ -110,14 +115,6 @@ public class TechnicsTypeModel {
         this.technicsType = technicsType;
     }
 
-    public Set<TechnicsTypeModelAttributeValue> getAttributeValues() {
-        return attributeValues;
-    }
-
-    public void setAttributeValues(Set<TechnicsTypeModelAttributeValue> attributeValues) {
-        this.attributeValues = attributeValues;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -137,8 +134,7 @@ public class TechnicsTypeModel {
                 Objects.equals(serialNumber, that.serialNumber) &&
                 Objects.equals(modelSize, that.modelSize) &&
                 Objects.equals(price, that.price) &&
-                Objects.equals(technicsType, that.technicsType) &&
-                Objects.equals(attributeValues, that.attributeValues);
+                Objects.equals(technicsType, that.technicsType);
     }
 
     @Override
@@ -146,6 +142,6 @@ public class TechnicsTypeModel {
         return Objects.hash(
                 id, name, color,
                 serialNumber, modelSize, price,
-                isInStock, technicsType, attributeValues);
+                isInStock, technicsType);
     }
 }

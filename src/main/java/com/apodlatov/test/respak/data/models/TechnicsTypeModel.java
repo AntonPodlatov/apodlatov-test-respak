@@ -22,7 +22,7 @@ public class TechnicsTypeModel {
 
     @Id
     @Column(name = "tt_model_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, name = "tt_model_name")

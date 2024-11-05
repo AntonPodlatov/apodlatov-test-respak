@@ -11,7 +11,7 @@ import java.util.Set;
 public class ComputerModelCategory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, name = "cm_cat_name")

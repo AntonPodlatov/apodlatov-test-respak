@@ -17,7 +17,7 @@ import java.util.Set;
 public class TvModelCategory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, name = "tm_cat_name")

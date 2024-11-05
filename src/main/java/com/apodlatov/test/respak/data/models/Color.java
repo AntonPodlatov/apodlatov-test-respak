@@ -16,7 +16,7 @@ public class Color {
 
     @Id
     @Column(name = "color_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, name = "color_name")

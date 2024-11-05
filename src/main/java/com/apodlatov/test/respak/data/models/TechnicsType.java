@@ -17,7 +17,7 @@ public class TechnicsType {
 
     @Id
     @Column(name = "tt_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, name = "tt_name")

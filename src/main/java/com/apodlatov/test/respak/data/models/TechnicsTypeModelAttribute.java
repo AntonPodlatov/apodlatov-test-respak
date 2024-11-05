@@ -1,4 +1,4 @@
-package com.apodlatov.test.respak.data;
+package com.apodlatov.test.respak.data.models;
 
 import javax.persistence.*;
 import java.util.Objects;

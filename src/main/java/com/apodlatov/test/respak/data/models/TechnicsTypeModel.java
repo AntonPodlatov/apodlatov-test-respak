@@ -1,4 +1,4 @@
-package com.apodlatov.test.respak.data;
+package com.apodlatov.test.respak.data.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -17,14 +17,18 @@ public class TechnicsTypeModel {
     @Column(nullable = false, name = "tt_model_name")
     private String name;
 
-    @Column(nullable = false, name = "tt_model_color")
-    private String color;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "color_id", nullable = false)
+    private Color color;
 
     @Column(nullable = false, name = "tt_model_serial_number", unique = true)
     private String serialNumber;
 
-    @Column(nullable = false, name = "tt_model_size")
-    private String size;
+    @OneToOne
+    @JoinColumn(
+            name = "tt_model_size_id",
+            referencedColumnName = "tt_model_size_id")
+    private ModelSize modelSize;
 
     @Column(nullable = false, name = "tt_model_price", precision = 12, scale = 2)
     private BigDecimal price;
@@ -58,11 +62,11 @@ public class TechnicsTypeModel {
         this.name = name;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
@@ -74,12 +78,12 @@ public class TechnicsTypeModel {
         this.serialNumber = serialNumber;
     }
 
-    public String getSize() {
-        return size;
+    public ModelSize getModelSize() {
+        return modelSize;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setModelSize(ModelSize modelSize) {
+        this.modelSize = modelSize;
     }
 
     public BigDecimal getPrice() {
@@ -131,7 +135,7 @@ public class TechnicsTypeModel {
                 Objects.equals(name, that.name) &&
                 Objects.equals(color, that.color) &&
                 Objects.equals(serialNumber, that.serialNumber) &&
-                Objects.equals(size, that.size) &&
+                Objects.equals(modelSize, that.modelSize) &&
                 Objects.equals(price, that.price) &&
                 Objects.equals(technicsType, that.technicsType) &&
                 Objects.equals(attributeValues, that.attributeValues);
@@ -141,7 +145,7 @@ public class TechnicsTypeModel {
     public int hashCode() {
         return Objects.hash(
                 id, name, color,
-                serialNumber, size, price,
+                serialNumber, modelSize, price,
                 isInStock, technicsType, attributeValues);
     }
 }

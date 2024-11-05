@@ -1,0 +1,16 @@
+server:
+  port: 8091
+
+spring:
+  application:
+    name: apodlatov-test-respak
+  datasource:
+    url: jdbc:postgresql://localhost:5432/registry
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

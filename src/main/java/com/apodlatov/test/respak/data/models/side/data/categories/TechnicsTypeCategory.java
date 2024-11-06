@@ -1,6 +1,6 @@
 package com.apodlatov.test.respak.data.models.side.data.categories;
 
-import com.apodlatov.test.respak.data.models.TechnicsType;
+import com.apodlatov.test.respak.data.models.TechnicsTypeData;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,8 +24,8 @@ public class TechnicsTypeCategory {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "tt_id")
-    private TechnicsType technicsType;
+    @JoinColumn(name = "ttd_id")
+    private TechnicsTypeData technicsTypeData;
 
     public TechnicsTypeCategory() {
     }
@@ -46,12 +46,12 @@ public class TechnicsTypeCategory {
         this.name = name;
     }
 
-    public TechnicsType getTechnicsType() {
-        return technicsType;
+    public TechnicsTypeData getTechnicsTypeData() {
+        return technicsTypeData;
     }
 
-    public void setTechnicsType(TechnicsType technicsType) {
-        this.technicsType = technicsType;
+    public void setTechnicsTypeData(TechnicsTypeData technicsTypeData) {
+        this.technicsTypeData = technicsTypeData;
     }
 
     @Override
@@ -67,7 +67,7 @@ public class TechnicsTypeCategory {
         TechnicsTypeCategory that = (TechnicsTypeCategory) o;
 
         return Objects.equals(id, that.id) &&
-                Objects.equals(technicsType, that.technicsType) &&
+                Objects.equals(technicsTypeData, that.technicsTypeData) &&
                 Objects.equals(name, that.name);
     }
 
@@ -75,7 +75,7 @@ public class TechnicsTypeCategory {
     public int hashCode() {
         int result = Objects.hashCode(id);
         result = 31 * result + Objects.hashCode(name);
-        result = 31 * result + Objects.hashCode(technicsType);
+        result = 31 * result + Objects.hashCode(technicsTypeData);
         return result;
     }
 }

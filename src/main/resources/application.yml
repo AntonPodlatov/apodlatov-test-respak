@@ -2,6 +2,9 @@ server:
   port: 8091
 
 spring:
+  flyway:
+    baseline-on-migrate: false
+    enabled: false
   application:
     name: apodlatov-test-respak
   datasource:
@@ -11,7 +14,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
 
     properties:
       hibernate:

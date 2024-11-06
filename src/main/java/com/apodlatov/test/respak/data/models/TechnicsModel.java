@@ -41,8 +41,8 @@ public class TechnicsModel {
     private boolean isInStock = false;
 
     @ManyToOne
-    @JoinColumn(name = "tt_id")
-    private TechnicsType technicsType;
+    @JoinColumn(name = "ttd_id")
+    private TechnicsTypeData technicsTypeData;
 
     @OneToMany(
             mappedBy = "technicsModel",
@@ -109,12 +109,12 @@ public class TechnicsModel {
         isInStock = inStock;
     }
 
-    public TechnicsType getTechnicsType() {
-        return technicsType;
+    public TechnicsTypeData getTechnicsTypeData() {
+        return technicsTypeData;
     }
 
-    public void setTechnicsType(TechnicsType technicsType) {
-        this.technicsType = technicsType;
+    public void setTechnicsTypeData(TechnicsTypeData technicsType) {
+        this.technicsTypeData = technicsType;
     }
 
     public Set<ModelOptionValue> getModelOptionsValues() {
@@ -143,7 +143,7 @@ public class TechnicsModel {
                 Objects.equals(color, that.color) &&
                 Objects.equals(serialNumber, that.serialNumber) &&
                 Objects.equals(modelSize, that.modelSize) &&
-                Objects.equals(technicsType, that.technicsType) &&
+                Objects.equals(technicsTypeData, that.technicsTypeData) &&
                 Objects.equals(modelOptionsValues, that.modelOptionsValues) &&
                 Objects.equals(price, that.price);
     }
@@ -157,7 +157,7 @@ public class TechnicsModel {
         result = 31 * result + Objects.hashCode(price);
         result = 31 * result + Boolean.hashCode(isInStock);
         result = 31 * result + Objects.hashCode(modelSize);
-        result = 31 * result + Objects.hashCode(technicsType);
+        result = 31 * result + Objects.hashCode(technicsTypeData);
         result = 31 * result + Objects.hashCode(modelOptionsValues);
         return result;
     }

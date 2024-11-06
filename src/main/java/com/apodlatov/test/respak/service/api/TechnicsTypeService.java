@@ -1,14 +1,14 @@
 package com.apodlatov.test.respak.service.api;
 
-import com.apodlatov.test.respak.data.models.TechnicsType;
+import com.apodlatov.test.respak.data.models.TechnicsTypeData;
 
 import java.util.List;
 
 public interface TechnicsTypeService {
-    public List<TechnicsType> getAllTechnicsTypes();
-    public List<TechnicsType> getAllTechnicsTypeById(List<Long> ids);
+    public List<TechnicsTypeData> getAllTechnicsTypes();
+    public List<TechnicsTypeData> getAllTechnicsTypeById(List<Long> ids);
 
-    TechnicsType addTechnicsType(
+    TechnicsTypeData addTechnicsType(
             String name,
             String manufacturerName, String manufactureCountry,
             boolean onlineOrderAvailable, boolean installmentsAvailable);

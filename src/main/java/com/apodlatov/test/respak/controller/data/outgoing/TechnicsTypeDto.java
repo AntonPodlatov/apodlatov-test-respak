@@ -1,6 +1,6 @@
 package com.apodlatov.test.respak.controller.data.outgoing;
 
-import com.apodlatov.test.respak.data.models.TechnicsType;
+import com.apodlatov.test.respak.data.models.TechnicsTypeData;
 import com.apodlatov.test.respak.data.models.TechnicsModel;
 
 import java.util.Set;
@@ -17,7 +17,7 @@ public class TechnicsTypeDto {
     public TechnicsTypeDto() {
     }
 
-    public TechnicsTypeDto(TechnicsType technicsType) {
+    public TechnicsTypeDto(TechnicsTypeData technicsType) {
         id = technicsType.getId();
         name = technicsType.getName();
         manufactureCountry = technicsType.getManufactureCountry();

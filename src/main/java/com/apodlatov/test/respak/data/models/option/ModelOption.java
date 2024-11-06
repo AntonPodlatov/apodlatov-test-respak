@@ -1,6 +1,6 @@
 package com.apodlatov.test.respak.data.models.option;
 
-import com.apodlatov.test.respak.data.models.TechnicsType;
+import com.apodlatov.test.respak.data.models.TechnicsTypeData;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,8 +26,8 @@ public class ModelOption {
     private String modelOptionName;
 
     @ManyToOne
-    @JoinColumn(name = "tt_id")
-    private TechnicsType technicsType;
+    @JoinColumn(name = "ttd_id")
+    private TechnicsTypeData technicsTypeData;
 
     @OneToMany(
             mappedBy = "modelOption",
@@ -54,12 +54,12 @@ public class ModelOption {
         this.modelOptionName = modelOptionName;
     }
 
-    public TechnicsType getTechnicsType() {
-        return technicsType;
+    public TechnicsTypeData getTechnicsTypeData() {
+        return technicsTypeData;
     }
 
-    public void setTechnicsType(TechnicsType technicsType) {
-        this.technicsType = technicsType;
+    public void setTechnicsTypeData(TechnicsTypeData technicsTypeData) {
+        this.technicsTypeData = technicsTypeData;
     }
 
     public Set<ModelOptionValue> getModelOptionValues() {
@@ -78,7 +78,7 @@ public class ModelOption {
         ModelOption that = (ModelOption) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(modelOptionName, that.modelOptionName) &&
-                Objects.equals(technicsType, that.technicsType) &&
+                Objects.equals(technicsTypeData, that.technicsTypeData) &&
                 Objects.equals(modelOptionValues, that.modelOptionValues);
     }
 
@@ -86,7 +86,7 @@ public class ModelOption {
     public int hashCode() {
         int result = Objects.hashCode(id);
         result = 31 * result + Objects.hashCode(modelOptionName);
-        result = 31 * result + Objects.hashCode(technicsType);
+        result = 31 * result + Objects.hashCode(technicsTypeData);
         result = 31 * result + Objects.hashCode(modelOptionValues);
         return result;
     }

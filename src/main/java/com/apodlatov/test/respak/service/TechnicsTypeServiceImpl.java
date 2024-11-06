@@ -1,6 +1,6 @@
 package com.apodlatov.test.respak.service;
 
-import com.apodlatov.test.respak.data.models.TechnicsType;
+import com.apodlatov.test.respak.data.models.TechnicsTypeData;
 import com.apodlatov.test.respak.data.repo.TechnicsTypeRepository;
 import com.apodlatov.test.respak.service.api.TechnicsTypeService;
 import org.springframework.stereotype.Service;
@@ -15,20 +15,20 @@ public class TechnicsTypeServiceImpl implements TechnicsTypeService {
         this.technicsTypeRepository = technicsTypeRepository;
     }
 
-    public List<TechnicsType> getAllTechnicsTypes() {
+    public List<TechnicsTypeData> getAllTechnicsTypes() {
         return technicsTypeRepository.findAll();
     }
 
-    public List<TechnicsType> getAllTechnicsTypeById(List<Long> ids) {
+    public List<TechnicsTypeData> getAllTechnicsTypeById(List<Long> ids) {
         return technicsTypeRepository.findAllById(ids);
     }
 
     @Override
-    public TechnicsType addTechnicsType(String name,
-            String manufacturerName, String manufactureCountry,
-            boolean onlineOrderAvailable, boolean installmentsAvailable) {
+    public TechnicsTypeData addTechnicsType(String name,
+                                            String manufacturerName, String manufactureCountry,
+                                            boolean onlineOrderAvailable, boolean installmentsAvailable) {
 
-        TechnicsType technicsType = new TechnicsType();
+        TechnicsTypeData technicsType = new TechnicsTypeData();
         technicsType.setName(name);
         technicsType.setManufacturerName(manufacturerName);
         technicsType.setManufactureCountry(manufactureCountry);

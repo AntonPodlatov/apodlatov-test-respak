@@ -26,7 +26,7 @@ public class ModelOption {
     @Column(name = "model_option_name")
     private String modelOptionName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tt_id")
     private TechnicsType technicsType;
 

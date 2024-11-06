@@ -2,14 +2,7 @@ package com.apodlatov.test.respak.data.models.option;
 
 import com.apodlatov.test.respak.data.models.TechnicsModel;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -22,11 +15,11 @@ public class ModelOptionValue {
     @Column(name = "models_option_value")
     private String modelOptionValue;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mo_id")
     private ModelOption modelOption;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tm_id")
     private TechnicsModel technicsModel;
 

@@ -44,7 +44,7 @@ public class TechnicsTypeData {
     )
     private List<TechnicsModel> technicsTypeModels;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tt_id")
     private TechnicsType technicsType;
 

@@ -4,7 +4,7 @@ import com.apodlatov.test.respak.controller.data.incoming.AddTechnicsTypeDto;
 import com.apodlatov.test.respak.controller.data.incoming.DeleteTechnicsTypesByIdsDto;
 import com.apodlatov.test.respak.controller.data.incoming.GetTechnicsTypesByIdsDto;
 import com.apodlatov.test.respak.controller.data.outgoing.TechnicsTypeDto;
-import com.apodlatov.test.respak.data.models.TechnicsTypeData;
+import com.apodlatov.test.respak.data.models.TechnicsType;
 import com.apodlatov.test.respak.service.api.TechnicsTypeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,13 +38,9 @@ public class TechnicsTypeController {
     @PostMapping("add")
     public ResponseEntity<TechnicsTypeDto> addTechnicsType(
             @RequestBody AddTechnicsTypeDto dto) {
-        TechnicsTypeData newTechnicsType =
+        TechnicsType newTechnicsType =
                 technicsTypeService.addTechnicsType(
-                        dto.getName(),
-                        dto.getManufacturerName(),
-                        dto.getManufactureCountry(),
-                        dto.isOnlineOrderAvailable(),
-                        dto.isInstallmentsAvailable());
+                        dto.getName());
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)

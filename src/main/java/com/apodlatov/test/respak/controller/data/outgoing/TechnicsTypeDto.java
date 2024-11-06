@@ -1,27 +1,17 @@
 package com.apodlatov.test.respak.controller.data.outgoing;
 
-import com.apodlatov.test.respak.data.models.TechnicsTypeData;
-import com.apodlatov.test.respak.data.models.TechnicsModel;
-
-import java.util.Set;
+import com.apodlatov.test.respak.data.models.TechnicsType;
 
 public class TechnicsTypeDto {
     private Long id;
-    private String manufactureCountry;
-    private String manufacturerName;
-    private boolean isOnlineOrderAvailable;
-    private boolean isInstallmentsAvailable;
-    private Set<TechnicsModel> technicsTypeModels;
+    private String name;
 
-    public TechnicsTypeDto() {
+    public TechnicsTypeDto(TechnicsType technicsType) {
+        this.id = technicsType.getId();
+        this.name = technicsType.getName();
     }
 
-    public TechnicsTypeDto(TechnicsTypeData technicsType) {
-        id = technicsType.getId();
-        manufactureCountry = technicsType.getManufactureCountry();
-        manufacturerName = technicsType.getManufacturerName();
-        isOnlineOrderAvailable = technicsType.isOnlineOrderAvailable();
-        isInstallmentsAvailable = technicsType.isInstallmentsAvailable();
+    public TechnicsTypeDto() {
     }
 
     public Long getId() {
@@ -32,44 +22,11 @@ public class TechnicsTypeDto {
         this.id = id;
     }
 
-
-    public String getManufactureCountry() {
-        return manufactureCountry;
+    public String getName() {
+        return name;
     }
 
-    public void setManufactureCountry(String manufactureCountry) {
-        this.manufactureCountry = manufactureCountry;
-    }
-
-    public String getManufacturerName() {
-        return manufacturerName;
-    }
-
-    public void setManufacturerName(String manufacturerName) {
-        this.manufacturerName = manufacturerName;
-    }
-
-    public boolean isOnlineOrderAvailable() {
-        return isOnlineOrderAvailable;
-    }
-
-    public void setOnlineOrderAvailable(boolean onlineOrderAvailable) {
-        isOnlineOrderAvailable = onlineOrderAvailable;
-    }
-
-    public boolean isInstallmentsAvailable() {
-        return isInstallmentsAvailable;
-    }
-
-    public void setInstallmentsAvailable(boolean installmentsAvailable) {
-        isInstallmentsAvailable = installmentsAvailable;
-    }
-
-    public Set<TechnicsModel> getTechnicsTypeModels() {
-        return technicsTypeModels;
-    }
-
-    public void setTechnicsTypeModels(Set<TechnicsModel> technicsTypeModels) {
-        this.technicsTypeModels = technicsTypeModels;
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -72,15 +72,20 @@ CREATE INDEX idx_technics_type_tt_name ON technics_type (tt_name);
 
 CREATE TABLE technics_types_categories
 (
-    id           BIGSERIAL    NOT NULL,
+    ttc_id           BIGSERIAL    NOT NULL,
     ttc_cat_name VARCHAR(255) NOT NULL,
-    ttd_id       BIGINT,
-    CONSTRAINT technics_types_categories_pkey PRIMARY KEY (id)
+    CONSTRAINT technics_types_categories_pkey PRIMARY KEY (ttc_id)
 );
 
-CREATE INDEX idx_technics_types_categories_id ON technics_types_categories (id);
+CREATE TABLE technics_type_categories
+(
+    ttd_id BIGINT NOT NULL,
+    ttc_id BIGINT NOT NULL,
+    CONSTRAINT technics_type_categories_pkey PRIMARY KEY (ttd_id, ttc_id)
+);
+
+CREATE INDEX idx_technics_types_categories_id ON technics_types_categories (ttc_id);
 CREATE INDEX idx_technics_types_categories_ttc_cat_name ON technics_types_categories (ttc_cat_name);
-CREATE INDEX idx_technics_types_categories_ttd_id ON technics_types_categories (ttd_id);
 
 CREATE TABLE technics_types_data
 (
@@ -89,7 +94,6 @@ CREATE TABLE technics_types_data
     ttd_is_online_order_available BOOLEAN      NOT NULL,
     ttd_manufacture_country       VARCHAR(255) NOT NULL,
     ttd_manufacturer_name         VARCHAR(255) NOT NULL,
-    ttd_name                      VARCHAR(255) NOT NULL,
     tt_id                         BIGINT,
     CONSTRAINT technics_types_data_pkey PRIMARY KEY (ttd_id)
 );
@@ -97,7 +101,6 @@ CREATE TABLE technics_types_data
 CREATE INDEX idx_technics_types_data_ttd_id ON technics_types_data (ttd_id);
 CREATE INDEX idx_technics_types_data_ttc_ttd_is_installments_available ON technics_types_data (ttd_is_installments_available);
 CREATE INDEX idx_technics_types_data_ttd_ttd_is_online_order_available ON technics_types_data (ttd_is_online_order_available);
-CREATE INDEX idx_technics_types_data_ttd_ttd_name ON technics_types_data (ttd_name);
 CREATE INDEX idx_technics_types_data_ttd_tt_id ON technics_types_data (tt_id);
 
 ALTER TABLE technics_models
@@ -118,11 +121,10 @@ ALTER TABLE technics_types_data
 ALTER TABLE technics_models
     ADD CONSTRAINT fkbuf139gh9h96big0r0av7vk4d FOREIGN KEY (ttd_id) REFERENCES technics_types_data (ttd_id) ON DELETE NO ACTION;
 
-ALTER TABLE technics_types_categories
-    ADD CONSTRAINT fkeg5de2dktcb6qan1aa7ecjnds FOREIGN KEY (ttd_id) REFERENCES technics_types_data (ttd_id) ON DELETE NO ACTION;
-
-ALTER TABLE models_options_values
-    ADD CONSTRAINT fklcffulytpok9rtqic7jnw133g FOREIGN KEY (tm_id) REFERENCES technics_models (tm_id) ON DELETE NO ACTION;
+ALTER TABLE technics_type_categories
+    ADD CONSTRAINT fkd641lusdowe5w2jmcgmtqnaii FOREIGN KEY (ttc_id) REFERENCES technics_types_categories (ttc_id) ON DELETE NO ACTION;
+ALTER TABLE technics_type_categories
+    ADD CONSTRAINT fks22we7aff0u3m3amrhvg20qud FOREIGN KEY (ttd_id) REFERENCES technics_types_data (ttd_id) ON DELETE NO ACTION;
 
 ALTER TABLE technics_models
     ADD CONSTRAINT fkmk6fwpd7d72ekcwnk2c92p9w5 FOREIGN KEY (color_id) REFERENCES colors (color_id) ON DELETE NO ACTION;

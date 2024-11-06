@@ -16,9 +16,6 @@ public class TechnicsTypeData {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false, name = "ttd_name")
-    private String name;
-
     @Column(nullable = false, name = "ttd_manufacture_country")
     private String manufactureCountry;
 
@@ -47,9 +44,11 @@ public class TechnicsTypeData {
     @JoinColumn(name = "tt_id")
     private TechnicsType technicsType;
 
-    @OneToMany(
-            mappedBy = "technicsTypeData",
-            fetch = FetchType.LAZY
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "technics_type_categories",
+            joinColumns = @JoinColumn(name = "ttd_id"),
+            inverseJoinColumns = @JoinColumn(name = "ttc_id")
     )
     private Set<TechnicsTypeCategory> typeCategories;
 
@@ -62,14 +61,6 @@ public class TechnicsTypeData {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getManufactureCountry() {
@@ -151,7 +142,6 @@ public class TechnicsTypeData {
         return isInstallmentsAvailable == that.isInstallmentsAvailable &&
                 isOnlineOrderAvailable == that.isOnlineOrderAvailable &&
                 Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name) &&
                 Objects.equals(technicsType, that.technicsType) &&
                 Objects.equals(manufactureCountry, that.manufactureCountry) &&
                 Objects.equals(manufacturerName, that.manufacturerName) &&
@@ -165,7 +155,6 @@ public class TechnicsTypeData {
         int result = Objects.hashCode(id);
         result = 31 * result + Boolean.hashCode(isOnlineOrderAvailable);
         result = 31 * result + Boolean.hashCode(isInstallmentsAvailable);
-        result = 31 * result + Objects.hashCode(name);
         result = 31 * result + Objects.hashCode(manufactureCountry);
         result = 31 * result + Objects.hashCode(manufacturerName);
         result = 31 * result + Objects.hashCode(technicsTypeModels);

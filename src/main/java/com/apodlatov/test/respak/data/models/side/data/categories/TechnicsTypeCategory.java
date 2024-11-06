@@ -2,30 +2,24 @@ package com.apodlatov.test.respak.data.models.side.data.categories;
 
 import com.apodlatov.test.respak.data.models.TechnicsTypeData;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Table
 @Entity(name = "technics_types_categories")
 public class TechnicsTypeCategory {
 
     @Id
+    @Column(name = "ttc_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false, name = "ttc_cat_name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "ttd_id")
-    private TechnicsTypeData technicsTypeData;
+    @ManyToMany(mappedBy = "typeCategories")
+    private Set<TechnicsTypeData> technicsTypeData;
 
     public TechnicsTypeCategory() {
     }
@@ -46,11 +40,11 @@ public class TechnicsTypeCategory {
         this.name = name;
     }
 
-    public TechnicsTypeData getTechnicsTypeData() {
+    public Set<TechnicsTypeData> getTechnicsTypeData() {
         return technicsTypeData;
     }
 
-    public void setTechnicsTypeData(TechnicsTypeData technicsTypeData) {
+    public void setTechnicsTypeData(Set<TechnicsTypeData> technicsTypeData) {
         this.technicsTypeData = technicsTypeData;
     }
 

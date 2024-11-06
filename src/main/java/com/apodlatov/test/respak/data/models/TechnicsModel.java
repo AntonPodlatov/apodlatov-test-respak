@@ -1,6 +1,5 @@
 package com.apodlatov.test.respak.data.models;
 
-import com.apodlatov.test.respak.data.models.option.ModelOption;
 import com.apodlatov.test.respak.data.models.option.ModelOptionValue;
 import com.apodlatov.test.respak.data.models.side.data.Color;
 import com.apodlatov.test.respak.data.models.side.data.ModelSize;
@@ -12,7 +11,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "technics_models")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class TechnicsModel {
 
     @Id
@@ -23,8 +21,8 @@ public class TechnicsModel {
     @Column(nullable = false, name = "tm_name")
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "color_id", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "color_id", referencedColumnName = "color_id")
     private Color color;
 
     @Column(nullable = false, name = "tm_serial_number", unique = true)

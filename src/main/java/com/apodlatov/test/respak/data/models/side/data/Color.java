@@ -2,14 +2,7 @@ package com.apodlatov.test.respak.data.models.side.data;
 
 import com.apodlatov.test.respak.data.models.TechnicsModel;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import java.util.List;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -18,14 +11,14 @@ public class Color {
 
     @Id
     @Column(name = "color_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false, name = "color_name")
     private String colorName;
 
-    @OneToMany(mappedBy = "color")
-    private List<TechnicsModel> models;
+    @OneToOne(mappedBy = "color")
+    private TechnicsModel technicsModel;
 
     @Column(nullable = false, name = "color_hex_value")
     private String hexValue;
@@ -57,12 +50,12 @@ public class Color {
         this.hexValue = hexValue;
     }
 
-    public List<TechnicsModel> getModels() {
-        return models;
+    public TechnicsModel getModel() {
+        return technicsModel;
     }
 
-    public void setModels(List<TechnicsModel> models) {
-        this.models = models;
+    public void setModel(TechnicsModel technicsModel) {
+        this.technicsModel = technicsModel;
     }
 
     @Override

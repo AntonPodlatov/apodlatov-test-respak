@@ -20,7 +20,7 @@ public class TechnicsType {
 
     @Id
     @Column(name = "tt_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false, name = "tt_name")

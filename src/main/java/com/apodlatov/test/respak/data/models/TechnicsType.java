@@ -1,5 +1,7 @@
 package com.apodlatov.test.respak.data.models;
 
+import com.apodlatov.test.respak.data.models.option.ModelOption;
+
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
@@ -21,6 +23,12 @@ public class TechnicsType {
     @Column(nullable = false, name = "tt_name")
     private String name;
 
+    @OneToMany(
+            mappedBy = "technicsType",
+            fetch = FetchType.LAZY
+    )
+    private Set<ModelOption> modelOptions;
+
     public TechnicsType() {
     }
 
@@ -40,24 +48,44 @@ public class TechnicsType {
         this.name = name;
     }
 
+    public Set<TechnicsTypeData> getTechnicsTypeDataSet() {
+        return technicsTypeDataSet;
+    }
+
+    public void setTechnicsTypeDataSet(Set<TechnicsTypeData> technicsTypeDataSet) {
+        this.technicsTypeDataSet = technicsTypeDataSet;
+    }
+
+    public Set<ModelOption> getModelOptions() {
+        return modelOptions;
+    }
+
+    public void setModelOptions(Set<ModelOption> modelOptions) {
+        this.modelOptions = modelOptions;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
-
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
 
         TechnicsType that = (TechnicsType) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name);
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(modelOptions, that.modelOptions) &&
+                Objects.equals(technicsTypeDataSet, that.technicsTypeDataSet);
     }
 
     @Override
     public int hashCode() {
         int result = Objects.hashCode(id);
+        result = 31 * result + Objects.hashCode(technicsTypeDataSet);
         result = 31 * result + Objects.hashCode(name);
+        result = 31 * result + Objects.hashCode(modelOptions);
         return result;
     }
 }

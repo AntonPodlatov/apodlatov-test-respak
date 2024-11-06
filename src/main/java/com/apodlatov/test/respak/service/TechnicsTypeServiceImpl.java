@@ -24,12 +24,11 @@ public class TechnicsTypeServiceImpl implements TechnicsTypeService {
     }
 
     @Override
-    public TechnicsTypeData addTechnicsType(String name,
-                                            String manufacturerName, String manufactureCountry,
-                                            boolean onlineOrderAvailable, boolean installmentsAvailable) {
+    public TechnicsTypeData addTechnicsType(
+            String name, String manufacturerName, String manufactureCountry,
+            boolean onlineOrderAvailable, boolean installmentsAvailable) {
 
         TechnicsTypeData technicsType = new TechnicsTypeData();
-        technicsType.setName(name);
         technicsType.setManufacturerName(manufacturerName);
         technicsType.setManufactureCountry(manufactureCountry);
         technicsType.setOnlineOrderAvailable(onlineOrderAvailable);

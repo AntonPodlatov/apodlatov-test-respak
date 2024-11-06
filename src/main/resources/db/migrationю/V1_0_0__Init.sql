@@ -19,11 +19,11 @@ CREATE TABLE models_options
 (
     id                BIGSERIAL NOT NULL,
     model_option_name VARCHAR(255),
-    ttd_id            BIGINT,
+    tt_id             BIGINT,
     CONSTRAINT models_options_pkey PRIMARY KEY (id)
 );
 
-CREATE INDEX idx_models_options_tt_id ON models_options (ttd_id);
+CREATE INDEX idx_models_options_tt_id ON models_options (tt_id);
 CREATE INDEX idx_models_options_name ON models_options (model_option_name);
 CREATE INDEX idx_models_options_id ON models_options (id);
 
@@ -72,7 +72,7 @@ CREATE INDEX idx_technics_type_tt_name ON technics_type (tt_name);
 
 CREATE TABLE technics_types_categories
 (
-    ttc_id           BIGSERIAL    NOT NULL,
+    ttc_id       BIGSERIAL    NOT NULL,
     ttc_cat_name VARCHAR(255) NOT NULL,
     CONSTRAINT technics_types_categories_pkey PRIMARY KEY (ttc_id)
 );
@@ -107,7 +107,7 @@ ALTER TABLE technics_models
     ADD CONSTRAINT uk_37csl7g5gu8wa0k2oaa4s5nas UNIQUE (tm_serial_number);
 
 ALTER TABLE models_options
-    ADD CONSTRAINT fk35afmmol28966t622k5dn7mfx FOREIGN KEY (ttd_id) REFERENCES technics_types_data (ttd_id) ON DELETE NO ACTION;
+    ADD CONSTRAINT fk35afmmol28966t622k5dn7mfx FOREIGN KEY (tt_id) REFERENCES technics_type (tt_id) ON DELETE NO ACTION;
 
 ALTER TABLE models_options_values
     ADD CONSTRAINT fkb6a51vjrwhb6hfdw8l94qpdva FOREIGN KEY (mo_id) REFERENCES models_options (id) ON DELETE NO ACTION;

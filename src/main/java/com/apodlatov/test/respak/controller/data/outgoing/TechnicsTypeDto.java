@@ -7,7 +7,6 @@ import java.util.Set;
 
 public class TechnicsTypeDto {
     private Long id;
-    private String name;
     private String manufactureCountry;
     private String manufacturerName;
     private boolean isOnlineOrderAvailable;
@@ -19,7 +18,6 @@ public class TechnicsTypeDto {
 
     public TechnicsTypeDto(TechnicsTypeData technicsType) {
         id = technicsType.getId();
-        name = technicsType.getName();
         manufactureCountry = technicsType.getManufactureCountry();
         manufacturerName = technicsType.getManufacturerName();
         isOnlineOrderAvailable = technicsType.isOnlineOrderAvailable();
@@ -34,13 +32,6 @@ public class TechnicsTypeDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getManufactureCountry() {
         return manufactureCountry;

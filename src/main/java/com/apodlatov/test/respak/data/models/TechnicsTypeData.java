@@ -34,12 +34,6 @@ public class TechnicsTypeData {
     )
     private Set<TechnicsModel> technicsTypeModels;
 
-    @OneToMany(
-            mappedBy = "technicsTypeData",
-            fetch = FetchType.LAZY
-    )
-    private Set<ModelOption> modelOptions;
-
     @ManyToOne
     @JoinColumn(name = "tt_id")
     private TechnicsType technicsType;
@@ -103,14 +97,6 @@ public class TechnicsTypeData {
         this.technicsTypeModels = technicsTypeModels;
     }
 
-    public Set<ModelOption> getModelOptions() {
-        return modelOptions;
-    }
-
-    public void setModelOptions(Set<ModelOption> modelOptions) {
-        this.modelOptions = modelOptions;
-    }
-
     public Set<TechnicsTypeCategory> getTypeCategories() {
         return typeCategories;
     }
@@ -145,7 +131,6 @@ public class TechnicsTypeData {
                 Objects.equals(technicsType, that.technicsType) &&
                 Objects.equals(manufactureCountry, that.manufactureCountry) &&
                 Objects.equals(manufacturerName, that.manufacturerName) &&
-                Objects.equals(modelOptions, that.modelOptions) &&
                 Objects.equals(typeCategories, that.typeCategories) &&
                 Objects.equals(technicsTypeModels, that.technicsTypeModels);
     }
@@ -158,7 +143,6 @@ public class TechnicsTypeData {
         result = 31 * result + Objects.hashCode(manufactureCountry);
         result = 31 * result + Objects.hashCode(manufacturerName);
         result = 31 * result + Objects.hashCode(technicsTypeModels);
-        result = 31 * result + Objects.hashCode(modelOptions);
         result = 31 * result + Objects.hashCode(technicsType);
         result = 31 * result + Objects.hashCode(typeCategories);
         return result;

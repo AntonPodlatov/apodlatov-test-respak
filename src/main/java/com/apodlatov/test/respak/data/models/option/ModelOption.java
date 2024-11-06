@@ -12,8 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
+
 
 @Entity
 @Table(name = "models_options")
@@ -33,7 +34,7 @@ public class ModelOption {
             mappedBy = "modelOption",
             fetch = FetchType.LAZY
     )
-    private Set<ModelOptionValue> modelOptionValues;
+    private List<ModelOptionValue> modelOptionValues;
 
     public ModelOption() {
     }
@@ -62,11 +63,11 @@ public class ModelOption {
         this.technicsType = technicsType;
     }
 
-    public Set<ModelOptionValue> getModelOptionValues() {
+    public List<ModelOptionValue> getModelOptionValues() {
         return modelOptionValues;
     }
 
-    public void setModelOptionValues(Set<ModelOptionValue> modelOptionValues) {
+    public void setModelOptionValues(List<ModelOptionValue> modelOptionValues) {
         this.modelOptionValues = modelOptionValues;
     }
 

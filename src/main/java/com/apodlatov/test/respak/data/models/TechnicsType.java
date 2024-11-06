@@ -2,9 +2,16 @@ package com.apodlatov.test.respak.data.models;
 
 import com.apodlatov.test.respak.data.models.option.ModelOption;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "technics_type")
@@ -18,7 +25,7 @@ public class TechnicsType {
             mappedBy = "technicsType",
             fetch = FetchType.LAZY
     )
-    private Set<TechnicsTypeData> technicsTypeDataSet;
+    private List<TechnicsTypeData> technicsTypeDataSet;
 
     @Column(nullable = false, name = "tt_name")
     private String name;
@@ -27,7 +34,7 @@ public class TechnicsType {
             mappedBy = "technicsType",
             fetch = FetchType.LAZY
     )
-    private Set<ModelOption> modelOptions;
+    private List<ModelOption> modelOptions;
 
     public TechnicsType() {
     }
@@ -48,19 +55,19 @@ public class TechnicsType {
         this.name = name;
     }
 
-    public Set<TechnicsTypeData> getTechnicsTypeDataSet() {
+    public List<TechnicsTypeData> getTechnicsTypeDataSet() {
         return technicsTypeDataSet;
     }
 
-    public void setTechnicsTypeDataSet(Set<TechnicsTypeData> technicsTypeDataSet) {
+    public void setTechnicsTypeDataSet(List<TechnicsTypeData> technicsTypeDataSet) {
         this.technicsTypeDataSet = technicsTypeDataSet;
     }
 
-    public Set<ModelOption> getModelOptions() {
+    public List<ModelOption> getModelOptions() {
         return modelOptions;
     }
 
-    public void setModelOptions(Set<ModelOption> modelOptions) {
+    public void setModelOptions(List<ModelOption> modelOptions) {
         this.modelOptions = modelOptions;
     }
 

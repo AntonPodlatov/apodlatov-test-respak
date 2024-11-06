@@ -6,8 +6,8 @@ import com.apodlatov.test.respak.data.models.side.data.ModelSize;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "technics_models")
@@ -48,7 +48,7 @@ public class TechnicsModel {
             mappedBy = "technicsModel",
             fetch = FetchType.LAZY
     )
-    private Set<ModelOptionValue> modelOptionsValues;
+    private List<ModelOptionValue> modelOptionsValues;
 
     public TechnicsModel() {
     }
@@ -117,11 +117,11 @@ public class TechnicsModel {
         this.technicsTypeData = technicsType;
     }
 
-    public Set<ModelOptionValue> getModelOptionsValues() {
+    public List<ModelOptionValue> getModelOptionsValues() {
         return modelOptionsValues;
     }
 
-    public void setModelOptionsValues(Set<ModelOptionValue> modelOptionsValues) {
+    public void setModelOptionsValues(List<ModelOptionValue> modelOptionsValues) {
         this.modelOptionsValues = modelOptionsValues;
     }
 

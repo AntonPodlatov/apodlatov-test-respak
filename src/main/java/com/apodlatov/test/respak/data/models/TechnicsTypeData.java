@@ -1,11 +1,21 @@
 package com.apodlatov.test.respak.data.models;
 
-import com.apodlatov.test.respak.data.models.option.ModelOption;
 import com.apodlatov.test.respak.data.models.side.data.categories.TechnicsTypeCategory;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "technics_types_data")
@@ -32,7 +42,7 @@ public class TechnicsTypeData {
             mappedBy = "technicsTypeData",
             fetch = FetchType.LAZY
     )
-    private Set<TechnicsModel> technicsTypeModels;
+    private List<TechnicsModel> technicsTypeModels;
 
     @ManyToOne
     @JoinColumn(name = "tt_id")
@@ -44,7 +54,7 @@ public class TechnicsTypeData {
             joinColumns = @JoinColumn(name = "ttd_id"),
             inverseJoinColumns = @JoinColumn(name = "ttc_id")
     )
-    private Set<TechnicsTypeCategory> typeCategories;
+    private List<TechnicsTypeCategory> typeCategories;
 
     public TechnicsTypeData() {
     }
@@ -89,19 +99,19 @@ public class TechnicsTypeData {
         isInstallmentsAvailable = installmentsAvailable;
     }
 
-    public Set<TechnicsModel> getTechnicsTypeModels() {
+    public List<TechnicsModel> getTechnicsTypeModels() {
         return technicsTypeModels;
     }
 
-    public void setTechnicsTypeModels(Set<TechnicsModel> technicsTypeModels) {
+    public void setTechnicsTypeModels(List<TechnicsModel> technicsTypeModels) {
         this.technicsTypeModels = technicsTypeModels;
     }
 
-    public Set<TechnicsTypeCategory> getTypeCategories() {
+    public List<TechnicsTypeCategory> getTypeCategories() {
         return typeCategories;
     }
 
-    public void setTypeCategories(Set<TechnicsTypeCategory> typeCategories) {
+    public void setTypeCategories(List<TechnicsTypeCategory> typeCategories) {
         this.typeCategories = typeCategories;
     }
 

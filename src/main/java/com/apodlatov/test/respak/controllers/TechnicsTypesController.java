@@ -1,5 +1,6 @@
 package com.apodlatov.test.respak.controllers;
 
+import com.apodlatov.test.respak.controllers.dto.DtoMapper;
 import com.apodlatov.test.respak.controllers.dto.incoming.AddTechnicsTypeDto;
 import com.apodlatov.test.respak.controllers.dto.incoming.DeleteTechnicsTypesByIdsDto;
 import com.apodlatov.test.respak.controllers.dto.incoming.GetTechnicsTypesByIdsDto;
@@ -22,9 +23,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/api_v1/technics_types/")
 public class TechnicsTypesController {
     private final TechnicsTypesService technicsTypeService;
+    private final DtoMapper mapper;
 
-    public TechnicsTypesController(TechnicsTypesService technicsTypeService) {
+    public TechnicsTypesController(TechnicsTypesService technicsTypeService, DtoMapper mapper) {
         this.technicsTypeService = technicsTypeService;
+        this.mapper = mapper;
     }
 
     @PostMapping("update_type_name_by_id")
@@ -39,7 +42,7 @@ public class TechnicsTypesController {
             @RequestBody GetTechnicsTypesByIdsDto dto) {
         List<TechnicsTypeDto> dtos = technicsTypeService
                         .getAllTechnicsWithFullDataTypeById(dto.getIds()).stream()
-                        .map(this::mapToTechnicsTypeDto)
+                        .map(mapper::mapToTechnicsTypeDto)
                         .collect(Collectors.toList());
 
         return ResponseEntity.ok(dtos);
@@ -66,13 +69,4 @@ public class TechnicsTypesController {
         return ResponseEntity.ok().build();
     }
 
-
-    private TechnicsTypeDto mapToTechnicsTypeDto(TechnicsType technicsType) {
-        List<TechnicsTypeDataDto> dtos =
-                technicsType.getTechnicsTypeDatas().stream()
-                        .map(TechnicsTypeDataDto::new)
-                        .collect(Collectors.toList());
-
-        return new TechnicsTypeDto(technicsType.getId(), technicsType.getName(), dtos);
-    }
 }

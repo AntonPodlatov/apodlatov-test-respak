@@ -2,7 +2,7 @@ package com.apodlatov.test.respak.controllers.dto.incoming;
 
 import java.math.BigDecimal;
 
-public class SearchQueryDto {
+public class RegistryQueryDto {
     private String technicsModelNameTerm;
     //filters
     private Long technicsTypeId;
@@ -10,7 +10,12 @@ public class SearchQueryDto {
     private BigDecimal priceFrom;
     private BigDecimal priceTo;
 
-    public SearchQueryDto() {
+    int pageNumber;
+    int pageSize = 10;
+    String sortBy;
+    boolean ascending;
+
+    public RegistryQueryDto() {
     }
 
     public String getTechnicsModelNameTerm() {
@@ -51,5 +56,38 @@ public class SearchQueryDto {
 
     public void setPriceTo(BigDecimal priceTo) {
         this.priceTo = priceTo;
+    }
+
+    public int getPageNumber() {
+        return pageNumber;
+    }
+
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public String getSortBy() {
+        return sortBy == null ? "name" :
+                sortBy.isEmpty() ? "name" : sortBy;
+    }
+
+    public void setSortBy(String sortBy) {
+        this.sortBy = sortBy;
+    }
+
+    public boolean isAscending() {
+        return ascending;
+    }
+
+    public void setAscending(boolean ascending) {
+        this.ascending = ascending;
     }
 }

@@ -1,5 +1,6 @@
 package com.apodlatov.test.respak.controllers;
 
+import com.apodlatov.test.respak.controllers.dto.DtoMapper;
 import com.apodlatov.test.respak.controllers.dto.incoming.GetTechnicsModelsByIdsDto;
 import com.apodlatov.test.respak.controllers.dto.outgoing.TechnicsModelDto;
 import com.apodlatov.test.respak.controllers.dto.outgoing.TechnicsModelOptionDto;
@@ -20,9 +21,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/api_v1/technics_models/")
 public class TechnicsModelsController {
     private final TechnicsModelsService technicsModelsService;
+    private final DtoMapper dtoMapper;
 
-    public TechnicsModelsController(TechnicsModelsService technicsModelsService) {
+    public TechnicsModelsController(TechnicsModelsService technicsModelsService, DtoMapper dtoMapper) {
         this.technicsModelsService = technicsModelsService;
+        this.dtoMapper = dtoMapper;
     }
 
     @PostMapping("get_by_ids")
@@ -30,32 +33,9 @@ public class TechnicsModelsController {
             @RequestBody GetTechnicsModelsByIdsDto dto) {
         List<TechnicsModelDto> dtos =
                 technicsModelsService.getTechnicsModelsByIds(dto.getIds()).stream()
-                        .map(this::mapToTechnicsModelDto)
+                        .map(dtoMapper::mapToTechnicsModelDto)
                         .collect(Collectors.toList());
 
         return ResponseEntity.ok(dtos);
-    }
-
-    private TechnicsModelDto mapToTechnicsModelDto(TechnicsModel technicsModel) {
-        TechnicsModelDto technicsModelDto = new TechnicsModelDto();
-        technicsModelDto.setId(technicsModel.getId());
-        technicsModelDto.setName(technicsModel.getName());
-        technicsModelDto.setColor(technicsModel.getColor());
-        technicsModelDto.setModelSize(technicsModel.getModelSize());
-        technicsModelDto.setPrice(technicsModel.getPrice());
-        technicsModelDto.setInStock(technicsModel.isInStock());
-        technicsModelDto.setSerialNumber(technicsModel.getSerialNumber());
-
-        List<TechnicsModelOptionDto> dtos = new ArrayList<>();
-
-        for (ModelOptionValue optionValue: technicsModel.getModelOptionsValues()) {
-            String modelOptionName = optionValue.getModelOption().getModelOptionName();
-            String modelOptionValue = optionValue.getModelOptionValue();
-            dtos.add(new TechnicsModelOptionDto(modelOptionName, modelOptionValue));
-        }
-
-        technicsModelDto.setModelOptionsValuesDtos(dtos);
-
-        return technicsModelDto;
     }
 }

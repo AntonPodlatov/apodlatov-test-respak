@@ -171,9 +171,9 @@ VALUES (1, 1, 'LED', 25),
        (41, 7, '2', 11),
        (42, 7, '3', 12),
 
-       (43, 8, 'Intel Atom', 7),
-       (44, 8, 'Intel Pentium 4', 8),
-       (45, 8, 'Intel Pentium Silver', 9),
-       (46, 8, 'AMD Ryzen 5 5600G, OEM', 10),
-       (47, 8, 'AMD Athlon 64', 11),
-       (48, 8, 'Intel Xeon', 12)
+       (43, 8, 'Intel Atom', 13),
+       (44, 8, 'Intel Pentium 4', 14),
+       (45, 8, 'Intel Pentium Silver', 15),
+       (46, 8, 'AMD Ryzen 5 5600G, OEM', 16),
+       (47, 8, 'AMD Athlon 64', 17),
+       (48, 8, 'Intel Xeon', 18)

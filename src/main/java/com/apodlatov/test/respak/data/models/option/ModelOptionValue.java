@@ -1,8 +1,6 @@
 package com.apodlatov.test.respak.data.models.option;
 
-
 import com.apodlatov.test.respak.data.models.TechnicsModel;
-import com.apodlatov.test.respak.data.models.TechnicsType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -59,6 +57,14 @@ public class ModelOptionValue {
         this.modelOption = modelOption;
     }
 
+    public TechnicsModel getTechnicsModel() {
+        return technicsModel;
+    }
+
+    public void setTechnicsModel(TechnicsModel technicsModel) {
+        this.technicsModel = technicsModel;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -66,6 +72,7 @@ public class ModelOptionValue {
 
         ModelOptionValue that = (ModelOptionValue) o;
         return Objects.equals(id, that.id) &&
+                Objects.equals(technicsModel, that.technicsModel) &&
                 Objects.equals(modelOptionValue, that.modelOptionValue) &&
                 Objects.equals(modelOption, that.modelOption);
     }
@@ -74,6 +81,7 @@ public class ModelOptionValue {
     public int hashCode() {
         int result = Objects.hashCode(id);
         result = 31 * result + Objects.hashCode(modelOptionValue);
+        result = 31 * result + Objects.hashCode(technicsModel);
         result = 31 * result + Objects.hashCode(modelOption);
         return result;
     }

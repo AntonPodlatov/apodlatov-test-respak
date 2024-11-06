@@ -115,6 +115,22 @@ public class TechnicsType {
         this.technicsTypeModels = technicsTypeModels;
     }
 
+    public Set<ModelOption> getModelOptions() {
+        return modelOptions;
+    }
+
+    public void setModelOptions(Set<ModelOption> modelOptions) {
+        this.modelOptions = modelOptions;
+    }
+
+    public Set<TechnicsTypeCategory> getTypeCategories() {
+        return typeCategories;
+    }
+
+    public void setTypeCategories(Set<TechnicsTypeCategory> typeCategories) {
+        this.typeCategories = typeCategories;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -133,14 +149,22 @@ public class TechnicsType {
                 Objects.equals(name, that.name) &&
                 Objects.equals(manufactureCountry, that.manufactureCountry) &&
                 Objects.equals(manufacturerName, that.manufacturerName) &&
+                Objects.equals(modelOptions, that.modelOptions) &&
+                Objects.equals(typeCategories, that.typeCategories) &&
                 Objects.equals(technicsTypeModels, that.technicsTypeModels);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                id, name, manufactureCountry,
-                manufacturerName, isOnlineOrderAvailable,
-                isInstallmentsAvailable, technicsTypeModels);
+        int result = Objects.hashCode(id);
+        result = 31 * result + Boolean.hashCode(isOnlineOrderAvailable);
+        result = 31 * result + Boolean.hashCode(isInstallmentsAvailable);
+        result = 31 * result + Objects.hashCode(name);
+        result = 31 * result + Objects.hashCode(manufactureCountry);
+        result = 31 * result + Objects.hashCode(manufacturerName);
+        result = 31 * result + Objects.hashCode(technicsTypeModels);
+        result = 31 * result + Objects.hashCode(modelOptions);
+        result = 31 * result + Objects.hashCode(typeCategories);
+        return result;
     }
 }

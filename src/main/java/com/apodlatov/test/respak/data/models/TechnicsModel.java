@@ -119,6 +119,14 @@ public class TechnicsModel {
         this.technicsType = technicsType;
     }
 
+    public Set<ModelOptionValue> getModelOptionsValues() {
+        return modelOptionsValues;
+    }
+
+    public void setModelOptionsValues(Set<ModelOptionValue> modelOptionsValues) {
+        this.modelOptionsValues = modelOptionsValues;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -138,14 +146,21 @@ public class TechnicsModel {
                 Objects.equals(serialNumber, that.serialNumber) &&
                 Objects.equals(modelSize, that.modelSize) &&
                 Objects.equals(technicsType, that.technicsType) &&
+                Objects.equals(modelOptionsValues, that.modelOptionsValues) &&
                 Objects.equals(price, that.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                id, name, color,
-                serialNumber, modelSize, price,
-                isInStock, technicsType);
+        int result = Objects.hashCode(id);
+        result = 31 * result + Objects.hashCode(name);
+        result = 31 * result + Objects.hashCode(color);
+        result = 31 * result + Objects.hashCode(serialNumber);
+        result = 31 * result + Objects.hashCode(price);
+        result = 31 * result + Boolean.hashCode(isInStock);
+        result = 31 * result + Objects.hashCode(modelSize);
+        result = 31 * result + Objects.hashCode(technicsType);
+        result = 31 * result + Objects.hashCode(modelOptionsValues);
+        return result;
     }
 }

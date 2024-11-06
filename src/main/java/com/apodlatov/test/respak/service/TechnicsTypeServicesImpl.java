@@ -35,4 +35,9 @@ public class TechnicsTypeServicesImpl implements TechnicsTypesService {
     public void deleteByIds(List<Long> ids) {
         technicsTypeRepository.deleteAllById(ids);
     }
+
+    @Override
+    public void updateTypeName(long id, String name) {
+        technicsTypeRepository.updateTechnicsTypeName(id, name);
+    }
 }

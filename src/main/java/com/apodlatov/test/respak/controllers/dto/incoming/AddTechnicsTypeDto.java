@@ -1,4 +1,4 @@
-package com.apodlatov.test.respak.controllers.technics.types.dto.incoming;
+package com.apodlatov.test.respak.controllers.dto.incoming;
 
 public class AddTechnicsTypeDto {
     private String name;

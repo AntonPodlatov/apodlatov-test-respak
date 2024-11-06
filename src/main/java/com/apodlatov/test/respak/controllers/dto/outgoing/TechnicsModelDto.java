@@ -1,7 +1,5 @@
-package com.apodlatov.test.respak.controllers.technics.models.dto.outgoing;
+package com.apodlatov.test.respak.controllers.dto.outgoing;
 
-import com.apodlatov.test.respak.data.models.TechnicsTypeData;
-import com.apodlatov.test.respak.data.models.option.ModelOptionValue;
 import com.apodlatov.test.respak.data.models.side.data.Color;
 import com.apodlatov.test.respak.data.models.side.data.ModelSize;
 
@@ -16,8 +14,7 @@ public class TechnicsModelDto {
     private ModelSize modelSize;
     private BigDecimal price;
     private boolean isInStock;
-    private TechnicsTypeData technicsTypeData;
-    private List<ModelOptionValue> modelOptionsValues;
+    private List<TechnicsModelOptionDto> modelOptionsValuesDtos;
 
     public TechnicsModelDto() {
     }
@@ -25,8 +22,8 @@ public class TechnicsModelDto {
     public TechnicsModelDto(
             Long id, String name, Color color,
             String serialNumber, ModelSize modelSize,
-            BigDecimal price, boolean isInStock, TechnicsTypeData technicsTypeData,
-            List<ModelOptionValue> modelOptionsValues) {
+            BigDecimal price, boolean isInStock, TechnicsTypeDataDto technicsTypeData,
+            List<TechnicsModelOptionDto> modelOptionsValuesDtos) {
         this.id = id;
         this.name = name;
         this.color = color;
@@ -34,8 +31,7 @@ public class TechnicsModelDto {
         this.modelSize = modelSize;
         this.price = price;
         this.isInStock = isInStock;
-        this.technicsTypeData = technicsTypeData;
-        this.modelOptionsValues = modelOptionsValues;
+        this.modelOptionsValuesDtos = modelOptionsValuesDtos;
     }
 
     public Long getId() {
@@ -94,19 +90,11 @@ public class TechnicsModelDto {
         isInStock = inStock;
     }
 
-    public TechnicsTypeData getTechnicsTypeData() {
-        return technicsTypeData;
+    public List<TechnicsModelOptionDto> getModelOptionsValues() {
+        return modelOptionsValuesDtos;
     }
 
-    public void setTechnicsTypeData(TechnicsTypeData technicsTypeData) {
-        this.technicsTypeData = technicsTypeData;
-    }
-
-    public List<ModelOptionValue> getModelOptionsValues() {
-        return modelOptionsValues;
-    }
-
-    public void setModelOptionsValues(List<ModelOptionValue> modelOptionsValues) {
-        this.modelOptionsValues = modelOptionsValues;
+    public void setModelOptionsValuesDtos(List<TechnicsModelOptionDto> dtos) {
+        this.modelOptionsValuesDtos = dtos;
     }
 }

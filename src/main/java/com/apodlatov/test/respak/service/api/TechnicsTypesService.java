@@ -9,4 +9,5 @@ public interface TechnicsTypesService {
     List<TechnicsType> getAllTechnicsWithFullDataTypeById(List<Long> ids);
     TechnicsType addTechnicsType(String typeName);
     void deleteByIds(List<Long> ids);
+    void updateTypeName(long id, String name);
 }

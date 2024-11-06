@@ -1,4 +1,4 @@
-package com.apodlatov.test.respak.controllers.technics.types.dto.outgoing;
+package com.apodlatov.test.respak.controllers.dto.outgoing;
 
 import com.apodlatov.test.respak.data.models.TechnicsTypeData;
 

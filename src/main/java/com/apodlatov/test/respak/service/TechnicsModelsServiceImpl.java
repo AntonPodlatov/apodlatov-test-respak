@@ -15,8 +15,7 @@ public class TechnicsModelsServiceImpl implements TechnicsModelsService {
         this.technicsModelRepository = technicsModelRepository;
     }
 
-    public List<TechnicsModel> getTechnicsModelsByIds(List<Long> ids, boolean needTechnicsTypeData) {
-        return null;
+    public List<TechnicsModel> getTechnicsModelsByIds(List<Long> ids) {
+       return technicsModelRepository.fetchTechnicsModelsByIdsWithoutTypeData(ids);
     }
-
 }

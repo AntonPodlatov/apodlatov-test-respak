@@ -112,6 +112,9 @@ ALTER TABLE models_options
 ALTER TABLE models_options_values
     ADD CONSTRAINT fkb6a51vjrwhb6hfdw8l94qpdva FOREIGN KEY (mo_id) REFERENCES models_options (id) ON DELETE NO ACTION;
 
+ALTER TABLE models_options_values
+    ADD CONSTRAINT fk_mov_technics_models FOREIGN KEY (tm_id) REFERENCES technics_models (tm_id) ON DELETE NO ACTION;
+
 ALTER TABLE technics_models
     ADD CONSTRAINT fkbglyvwdwwwooymy71bbhec8rq FOREIGN KEY (tm_size_id) REFERENCES model_sizes (ms_size_id) ON DELETE NO ACTION;
 

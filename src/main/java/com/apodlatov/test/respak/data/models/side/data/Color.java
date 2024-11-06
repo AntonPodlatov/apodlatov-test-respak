@@ -1,4 +1,6 @@
-package com.apodlatov.test.respak.data.models;
+package com.apodlatov.test.respak.data.models.side.data;
+
+import com.apodlatov.test.respak.data.models.TechnicsModel;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +25,7 @@ public class Color {
     private String colorName;
 
     @OneToMany(mappedBy = "color")
-    private List<TechnicsTypeModel> models;
+    private List<TechnicsModel> models;
 
     @Column(nullable = false, name = "color_hex_value")
     private String hexValue;
@@ -55,11 +57,11 @@ public class Color {
         this.hexValue = hexValue;
     }
 
-    public List<TechnicsTypeModel> getModels() {
+    public List<TechnicsModel> getModels() {
         return models;
     }
 
-    public void setModels(List<TechnicsTypeModel> models) {
+    public void setModels(List<TechnicsModel> models) {
         this.models = models;
     }
 

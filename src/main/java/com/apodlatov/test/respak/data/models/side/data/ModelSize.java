@@ -1,28 +1,30 @@
-package com.apodlatov.test.respak.data.models;
+package com.apodlatov.test.respak.data.models.side.data;
+
+import com.apodlatov.test.respak.data.models.TechnicsModel;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tt_model_size")
+@Table(name = "model_sizes")
 public class ModelSize {
 
     @Id
-    @Column(name = "tt_model_size_id")
+    @Column(name = "ms_size_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, name = "tt_model_size_height")
+    @Column(nullable = false, name = "ms_size_height")
     private long height;
 
-    @Column(nullable = false, name = "tt_model_size_width")
+    @Column(nullable = false, name = "ms_size_width")
     private long width;
 
-    @Column(nullable = false, name = "tt_model_size_depth")
+    @Column(nullable = false, name = "ms_size_depth")
     private long depth;
 
     @OneToOne(mappedBy = "modelSize")
-    private TechnicsTypeModel technicsTypeModel;
+    private TechnicsModel technicsTypeModel;
 
     public ModelSize() {
     }
@@ -59,11 +61,11 @@ public class ModelSize {
         this.depth = depth;
     }
 
-    public TechnicsTypeModel getTechnicsTypeModel() {
+    public TechnicsModel getTechnicsTypeModel() {
         return technicsTypeModel;
     }
 
-    public void setTechnicsTypeModel(TechnicsTypeModel technicsTypeModel) {
+    public void setTechnicsTypeModel(TechnicsModel technicsTypeModel) {
         this.technicsTypeModel = technicsTypeModel;
     }
 

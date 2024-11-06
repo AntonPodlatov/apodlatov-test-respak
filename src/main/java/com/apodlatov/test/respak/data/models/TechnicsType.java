@@ -39,9 +39,10 @@ public class TechnicsType {
             mappedBy = "technicsType",
             fetch = FetchType.LAZY
     )
-    private Set<TechnicsTypeModel> technicsTypeModels;
+    private Set<TechnicsModel> technicsTypeModels;
 
-    public TechnicsType() {}
+    public TechnicsType() {
+    }
 
     public Long getId() {
         return id;
@@ -91,11 +92,11 @@ public class TechnicsType {
         isInstallmentsAvailable = installmentsAvailable;
     }
 
-    public Set<TechnicsTypeModel> getTechnicsTypeModels() {
+    public Set<TechnicsModel> getTechnicsTypeModels() {
         return technicsTypeModels;
     }
 
-    public void setTechnicsTypeModels(Set<TechnicsTypeModel> technicsTypeModels) {
+    public void setTechnicsTypeModels(Set<TechnicsModel> technicsTypeModels) {
         this.technicsTypeModels = technicsTypeModels;
     }
 

@@ -1,7 +1,7 @@
 package com.apodlatov.test.respak.controller.data.outgoing;
 
 import com.apodlatov.test.respak.data.models.TechnicsType;
-import com.apodlatov.test.respak.data.models.TechnicsTypeModel;
+import com.apodlatov.test.respak.data.models.TechnicsModel;
 
 import java.util.Set;
 
@@ -12,7 +12,7 @@ public class TechnicsTypeDto {
     private String manufacturerName;
     private boolean isOnlineOrderAvailable;
     private boolean isInstallmentsAvailable;
-    private Set<TechnicsTypeModel> technicsTypeModels;
+    private Set<TechnicsModel> technicsTypeModels;
 
     public TechnicsTypeDto() {
     }
@@ -24,7 +24,6 @@ public class TechnicsTypeDto {
         manufacturerName = technicsType.getManufacturerName();
         isOnlineOrderAvailable = technicsType.isOnlineOrderAvailable();
         isInstallmentsAvailable = technicsType.isInstallmentsAvailable();
-        technicsTypeModels = technicsType.getTechnicsTypeModels();
     }
 
     public Long getId() {
@@ -75,11 +74,11 @@ public class TechnicsTypeDto {
         isInstallmentsAvailable = installmentsAvailable;
     }
 
-    public Set<TechnicsTypeModel> getTechnicsTypeModels() {
+    public Set<TechnicsModel> getTechnicsTypeModels() {
         return technicsTypeModels;
     }
 
-    public void setTechnicsTypeModels(Set<TechnicsTypeModel> technicsTypeModels) {
+    public void setTechnicsTypeModels(Set<TechnicsModel> technicsTypeModels) {
         this.technicsTypeModels = technicsTypeModels;
     }
 }

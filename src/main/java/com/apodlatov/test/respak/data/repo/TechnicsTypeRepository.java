@@ -11,7 +11,6 @@ public interface TechnicsTypeRepository
         extends JpaRepository<TechnicsType, Long> {
 
     @Query("SELECT ttm FROM TechnicsType ttm " +
-            "LEFT JOIN FETCH ttm.technicsTypeModels " +
             "WHERE ttm.id IN :ids"
     )
     List<TechnicsType> findAllById(

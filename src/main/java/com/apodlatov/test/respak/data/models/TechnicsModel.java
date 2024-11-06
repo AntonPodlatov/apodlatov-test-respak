@@ -1,5 +1,8 @@
 package com.apodlatov.test.respak.data.models;
 
+import com.apodlatov.test.respak.data.models.side.data.Color;
+import com.apodlatov.test.respak.data.models.side.data.ModelSize;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,42 +19,42 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tt_models")
+@Table(name = "technics_models")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class TechnicsTypeModel {
+public class TechnicsModel {
 
     @Id
-    @Column(name = "tt_model_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "tm_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false, name = "tt_model_name")
+    @Column(nullable = false, name = "tm_name")
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "color_id", nullable = false)
     private Color color;
 
-    @Column(nullable = false, name = "tt_model_serial_number", unique = true)
+    @Column(nullable = false, name = "tm_serial_number", unique = true)
     private String serialNumber;
 
     @OneToOne
     @JoinColumn(
-            name = "tt_model_size_id",
-            referencedColumnName = "tt_model_size_id")
+            name = "tm_size_id",
+            referencedColumnName = "ms_size_id")
     private ModelSize modelSize;
 
-    @Column(nullable = false, name = "tt_model_price", precision = 12, scale = 2)
+    @Column(nullable = false, name = "tm_price", precision = 12, scale = 2)
     private BigDecimal price;
 
-    @Column(nullable = false, name = "tt_model_is_in_stock")
+    @Column(nullable = false, name = "tm_is_in_stock")
     private boolean isInStock = false;
 
     @ManyToOne
     @JoinColumn(name = "tt_id")
     private TechnicsType technicsType;
 
-    public TechnicsTypeModel() {
+    public TechnicsModel() {
     }
 
     public Long getId() {
@@ -128,7 +131,7 @@ public class TechnicsTypeModel {
             return false;
         }
 
-        TechnicsTypeModel that = (TechnicsTypeModel) o;
+        TechnicsModel that = (TechnicsModel) o;
 
         return isInStock == that.isInStock &&
                 Objects.equals(id, that.id) &&
@@ -136,8 +139,8 @@ public class TechnicsTypeModel {
                 Objects.equals(color, that.color) &&
                 Objects.equals(serialNumber, that.serialNumber) &&
                 Objects.equals(modelSize, that.modelSize) &&
-                Objects.equals(price, that.price) &&
-                Objects.equals(technicsType, that.technicsType);
+                Objects.equals(technicsType, that.technicsType) &&
+                Objects.equals(price, that.price);
     }
 
     @Override

@@ -1,13 +1,14 @@
-package com.apodlatov.test.respak.data.models.categories;
+package com.apodlatov.test.respak.data.models.side.data.categories;
 
-import com.apodlatov.test.respak.data.models.items.ComputerModel;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
-import java.util.Set;
 
 @Table
-@Entity(name = "computers_model_categories")
+//@Entity(name = "computers_model_categories")
 public class ComputerModelCategory {
 
     @Id
@@ -19,12 +20,6 @@ public class ComputerModelCategory {
 
     public ComputerModelCategory() {
     }
-
-    @OneToMany(
-            mappedBy = "technicsType",
-            fetch = FetchType.LAZY
-    )
-    private Set<ComputerModel> computerModels;
 
     public void setId(Long id) {
         this.id = id;

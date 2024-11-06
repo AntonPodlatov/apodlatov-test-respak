@@ -1,5 +1,8 @@
 package com.apodlatov.test.respak.data.models;
 
+import com.apodlatov.test.respak.data.models.option.ModelOption;
+import com.apodlatov.test.respak.data.models.side.data.categories.TechnicsTypeCategory;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,6 +43,18 @@ public class TechnicsType {
             fetch = FetchType.LAZY
     )
     private Set<TechnicsModel> technicsTypeModels;
+
+    @OneToMany(
+            mappedBy = "technicsType",
+            fetch = FetchType.LAZY
+    )
+    private Set<ModelOption> modelOptions;
+
+    @OneToMany(
+            mappedBy = "technicsType",
+            fetch = FetchType.LAZY
+    )
+    private Set<TechnicsTypeCategory> typeCategories;
 
     public TechnicsType() {
     }

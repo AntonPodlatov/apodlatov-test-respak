@@ -6,7 +6,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "colors")
 public class Color {
-
     @Id
     @Column(name = "color_id")
     @GeneratedValue(strategy = GenerationType.AUTO)

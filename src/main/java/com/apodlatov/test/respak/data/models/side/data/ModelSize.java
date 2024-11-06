@@ -11,7 +11,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "model_sizes")
 public class ModelSize {
-
     @Id
     @Column(name = "ms_size_id")
     @GeneratedValue(strategy = GenerationType.AUTO)

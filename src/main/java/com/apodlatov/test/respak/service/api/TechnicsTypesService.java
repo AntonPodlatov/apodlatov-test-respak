@@ -4,9 +4,9 @@ import com.apodlatov.test.respak.data.models.TechnicsType;
 
 import java.util.List;
 
-public interface TechnicsTypeService {
+public interface TechnicsTypesService {
     List<TechnicsType> getAllTechnicsTypes();
-    List<TechnicsType> getAllTechnicsTypeById(List<Long> ids);
+    List<TechnicsType> getAllTechnicsWithFullDataTypeById(List<Long> ids);
     TechnicsType addTechnicsType(String typeName);
     void deleteByIds(List<Long> ids);
 }

@@ -15,7 +15,6 @@ import javax.persistence.Table;
 import java.util.List;
 import java.util.Objects;
 
-
 @Entity
 @Table(name = "models_options")
 public class ModelOption {

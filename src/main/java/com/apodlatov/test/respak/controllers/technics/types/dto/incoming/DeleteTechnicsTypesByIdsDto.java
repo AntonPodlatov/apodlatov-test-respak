@@ -1,4 +1,4 @@
-package com.apodlatov.test.respak.controller.data.incoming;
+package com.apodlatov.test.respak.controllers.technics.types.dto.incoming;
 
 import java.util.List;
 

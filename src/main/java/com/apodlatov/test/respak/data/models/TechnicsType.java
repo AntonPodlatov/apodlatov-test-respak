@@ -25,7 +25,7 @@ public class TechnicsType {
             mappedBy = "technicsType",
             fetch = FetchType.LAZY
     )
-    private List<TechnicsTypeData> technicsTypeDataSet;
+    private List<TechnicsTypeData> technicsTypeDatas;
 
     @Column(nullable = false, name = "tt_name")
     private String name;
@@ -55,12 +55,12 @@ public class TechnicsType {
         this.name = name;
     }
 
-    public List<TechnicsTypeData> getTechnicsTypeDataSet() {
-        return technicsTypeDataSet;
+    public List<TechnicsTypeData> getTechnicsTypeDatas() {
+        return technicsTypeDatas;
     }
 
-    public void setTechnicsTypeDataSet(List<TechnicsTypeData> technicsTypeDataSet) {
-        this.technicsTypeDataSet = technicsTypeDataSet;
+    public void setTechnicsTypeDatas(List<TechnicsTypeData> technicsTypeDatas) {
+        this.technicsTypeDatas = technicsTypeDatas;
     }
 
     public List<ModelOption> getModelOptions() {
@@ -84,13 +84,13 @@ public class TechnicsType {
         return Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(modelOptions, that.modelOptions) &&
-                Objects.equals(technicsTypeDataSet, that.technicsTypeDataSet);
+                Objects.equals(technicsTypeDatas, that.technicsTypeDatas);
     }
 
     @Override
     public int hashCode() {
         int result = Objects.hashCode(id);
-        result = 31 * result + Objects.hashCode(technicsTypeDataSet);
+        result = 31 * result + Objects.hashCode(technicsTypeDatas);
         result = 31 * result + Objects.hashCode(name);
         result = 31 * result + Objects.hashCode(modelOptions);
         return result;

@@ -1,18 +1,17 @@
 package com.apodlatov.test.respak.service;
 
 import com.apodlatov.test.respak.data.models.TechnicsType;
-import com.apodlatov.test.respak.data.models.TechnicsTypeData;
 import com.apodlatov.test.respak.data.repo.TechnicsTypeRepository;
-import com.apodlatov.test.respak.service.api.TechnicsTypeService;
+import com.apodlatov.test.respak.service.api.TechnicsTypesService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class TechnicsTypeServiceImpl implements TechnicsTypeService {
+public class TechnicsTypeServicesImpl implements TechnicsTypesService {
     private final TechnicsTypeRepository technicsTypeRepository;
 
-    public TechnicsTypeServiceImpl(TechnicsTypeRepository technicsTypeRepository) {
+    public TechnicsTypeServicesImpl(TechnicsTypeRepository technicsTypeRepository) {
         this.technicsTypeRepository = technicsTypeRepository;
     }
 
@@ -20,8 +19,8 @@ public class TechnicsTypeServiceImpl implements TechnicsTypeService {
         return technicsTypeRepository.findAll();
     }
 
-    public List<TechnicsType> getAllTechnicsTypeById(List<Long> ids) {
-        return technicsTypeRepository.findAllById(ids);
+    public List<TechnicsType> getAllTechnicsWithFullDataTypeById(List<Long> ids) {
+        return technicsTypeRepository.fetchAllTechnicsWithFullDataTypeById(ids);
     }
 
     @Override

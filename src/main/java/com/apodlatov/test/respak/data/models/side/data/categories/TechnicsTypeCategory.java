@@ -16,7 +16,6 @@ import java.util.Objects;
 @Table
 @Entity(name = "technics_types_categories")
 public class TechnicsTypeCategory {
-
     @Id
     @Column(name = "ttc_id")
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,8 +1,11 @@
 package com.apodlatov.test.respak.data.models.side.data;
 
-import com.apodlatov.test.respak.data.models.TechnicsModel;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
@@ -22,9 +25,6 @@ public class ModelSize {
 
     @Column(nullable = false, name = "ms_size_depth")
     private long depth;
-
-    @OneToOne(mappedBy = "modelSize")
-    private TechnicsModel technicsTypeModel;
 
     public ModelSize() {
     }
@@ -59,14 +59,6 @@ public class ModelSize {
 
     public void setDepth(long depth) {
         this.depth = depth;
-    }
-
-    public TechnicsModel getTechnicsTypeModel() {
-        return technicsTypeModel;
-    }
-
-    public void setTechnicsTypeModel(TechnicsModel technicsTypeModel) {
-        this.technicsTypeModel = technicsTypeModel;
     }
 
     @Override

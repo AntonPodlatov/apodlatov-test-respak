@@ -1,7 +1,5 @@
 package com.apodlatov.test.respak.data.models.side.data;
 
-import com.apodlatov.test.respak.data.models.TechnicsModel;
-
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -16,9 +14,6 @@ public class Color {
 
     @Column(nullable = false, name = "color_name")
     private String colorName;
-
-    @OneToOne(mappedBy = "color")
-    private TechnicsModel technicsModel;
 
     @Column(nullable = false, name = "color_hex_value")
     private String hexValue;
@@ -48,14 +43,6 @@ public class Color {
 
     public void setHexValue(String hexValue) {
         this.hexValue = hexValue;
-    }
-
-    public TechnicsModel getModel() {
-        return technicsModel;
-    }
-
-    public void setModel(TechnicsModel technicsModel) {
-        this.technicsModel = technicsModel;
     }
 
     @Override

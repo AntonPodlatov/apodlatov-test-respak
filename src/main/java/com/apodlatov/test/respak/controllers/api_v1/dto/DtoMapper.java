@@ -1,9 +1,6 @@
 package com.apodlatov.test.respak.controllers.api_v1.dto;
 
-import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsModelDto;
-import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsModelOptionDto;
-import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsTypeDataDto;
-import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsTypeDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.*;
 import com.apodlatov.test.respak.data.models.TechnicsModel;
 import com.apodlatov.test.respak.data.models.TechnicsType;
 import com.apodlatov.test.respak.data.models.option.ModelOptionValue;
@@ -38,12 +35,16 @@ public class DtoMapper {
         return technicsModelDto;
     }
 
-    public TechnicsTypeDto mapToTechnicsTypeDto(TechnicsType technicsType) {
+    public TechnicsTypeWithDatasDto mapToTechnicsTypeWithDatasDto(TechnicsType technicsType) {
         List<TechnicsTypeDataDto> dtos =
                 technicsType.getTechnicsTypeDatas().stream()
                         .map(TechnicsTypeDataDto::new)
                         .collect(Collectors.toList());
 
-        return new TechnicsTypeDto(technicsType.getId(), technicsType.getName(), dtos);
+        return new TechnicsTypeWithDatasDto(technicsType.getId(), technicsType.getName(), dtos);
+    }
+
+    public TechnicsTypeDto mapToTechnicsTypeDto(TechnicsType technicsType) {
+        return new TechnicsTypeDto(technicsType.getId(), technicsType.getName());
     }
 }

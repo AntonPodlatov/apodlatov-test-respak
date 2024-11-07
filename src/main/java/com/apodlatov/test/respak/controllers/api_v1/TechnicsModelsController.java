@@ -3,9 +3,15 @@ package com.apodlatov.test.respak.controllers.api_v1;
 import com.apodlatov.test.respak.controllers.api_v1.dto.DtoMapper;
 import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.AddTechnicsModelDto;
 import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.GetTechnicsModelsByIdsDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.RegistryQueryDto;
 import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsModelDto;
 import com.apodlatov.test.respak.data.models.TechnicsModel;
 import com.apodlatov.test.respak.service.api.TechnicsModelsService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +36,25 @@ public class TechnicsModelsController {
         this.dtoMapper = dtoMapper;
     }
 
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Выдан список моделей"),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Невалидный запрос",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")}),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Ошибка сервера",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")})
+    })
+    @Operation(
+            summary = "Получение Моделей по списку id",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    content = @Content(
+                            schema = @Schema(
+                                    implementation = GetTechnicsModelsByIdsDto.class))))
     @PostMapping("get_by_ids")
     public ResponseEntity<List<TechnicsModelDto>> getTechnicsModelsByIds(
             @RequestBody @Valid GetTechnicsModelsByIdsDto dto) {
@@ -41,7 +66,26 @@ public class TechnicsModelsController {
         return ResponseEntity.ok(dtos);
     }
 
-    @PostMapping("add_model")
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Сущность создана"),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Невалидный запрос",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")}),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Ошибка сервера",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")})
+    })
+    @Operation(
+            summary = "Добавление модели техники",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    content = @Content(
+                            schema = @Schema(
+                                    implementation = AddTechnicsModelDto.class))))
+    @PostMapping("add")
     public ResponseEntity<TechnicsModelDto> addTechnicsModel(
             @RequestBody @Valid AddTechnicsModelDto dto) {
 

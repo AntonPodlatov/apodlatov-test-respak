@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
-@Tag(name = "Реестр техники")
+@Tag(name = "Api - Реестр техники")
 @Controller
 @RequestMapping("/api_v1/registry_main/technic_models")
 public class RegistryController {
@@ -37,7 +37,7 @@ public class RegistryController {
     @ApiResponses({
             @ApiResponse(
                     responseCode = "200",
-                    description = "Страница с результатами поиска"),
+                    description = "Выдана страница с результатами поиска"),
 
             @ApiResponse(
                     responseCode = "400",

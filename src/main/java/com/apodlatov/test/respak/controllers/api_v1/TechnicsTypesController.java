@@ -9,6 +9,8 @@ import com.apodlatov.test.respak.service.api.TechnicsTypesService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,7 +27,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@Tag(name = "Апи видов техники")
+@Tag(name = "Api видов техники")
 @RequestMapping("/api_v1/technics_types/")
 public class TechnicsTypesController {
     private final TechnicsTypesService technicsTypeService;
@@ -36,6 +38,19 @@ public class TechnicsTypesController {
         this.mapper = mapper;
     }
 
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Сущность обновлена"),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Невалидный запрос",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")}),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Ошибка сервера",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")})
+    })
     @Operation(
             summary = "Обновить название вида техники",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
@@ -50,6 +65,19 @@ public class TechnicsTypesController {
     }
 
 
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Выдан список с результатом поиска"),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Невалидный запрос",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")}),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Ошибка сервера",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")})
+    })
     @Operation(
             summary = "Получение списка видов техники с вложенными экземплярами вида по списку id",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
@@ -68,6 +96,19 @@ public class TechnicsTypesController {
     }
 
 
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Вид техники создан"),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Невалидный запрос",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")}),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Ошибка сервера",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")})
+    })
     @Operation(
             summary = "Создание нового вида(типа) техники.",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
@@ -87,21 +128,19 @@ public class TechnicsTypesController {
                         newTechnicsType.getName()));
     }
 
-
-    @Operation(
-            summary = "Удаление списка техники по списку id",
-            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    content = @Content(
-                            schema = @Schema(
-                                    implementation = DeleteTechnicsTypesByIdsDto.class))))
-    @PostMapping("delete_by_ids")
-    public ResponseEntity<?> deleteByIds(
-            @Valid @RequestBody DeleteTechnicsTypesByIdsDto dto) {
-        technicsTypeService.deleteByIds(dto.getIds());
-
-        return ResponseEntity.ok().build();
-    }
-
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Выдана страница видов техники"),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Невалидный запрос",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")}),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Ошибка сервера",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")})
+    })
     @Operation(
             summary = "Постраничное получение видов техники.",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(

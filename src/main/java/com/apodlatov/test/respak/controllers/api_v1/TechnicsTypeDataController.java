@@ -6,6 +6,8 @@ import com.apodlatov.test.respak.service.api.TechnicsTypesDataService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@Tag(name = "Апи экземпляров видов техники")
+@Tag(name = "Api экземпляров видов техники")
 @RequestMapping("/api_v1/technics_type_data/")
 public class TechnicsTypeDataController {
     private final TechnicsTypesDataService technicsTypesDataService;
@@ -23,14 +25,28 @@ public class TechnicsTypeDataController {
         this.technicsTypesDataService = technicsTypesDataService;
     }
 
-    @PostMapping
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "сущность создана"),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Невалидный запрос",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")}),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Ошибка сервера",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")})
+    })
     @Operation(
             summary = "Добавить экземпляр вида техники",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     content = @Content(
                             schema = @Schema(
                                     implementation = AddTechnicsTypeDataDto.class))))
-    public ResponseEntity<TechnicsTypeWithDatasDto> addTechnicsTypeData(@RequestBody AddTechnicsTypeDataDto dto) {
+    @PostMapping("add")
+    public ResponseEntity<TechnicsTypeWithDatasDto> addTechnicsTypeData(
+            @RequestBody AddTechnicsTypeDataDto dto) {
         technicsTypesDataService.addTechnicsTypeData(
                 dto.getTechnicsTypeId(), dto.getManufacturerName(),
                 dto.getManufactureCountry(), dto.isInstallmentsAvailable(),

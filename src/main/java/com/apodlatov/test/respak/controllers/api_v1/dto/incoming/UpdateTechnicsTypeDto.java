@@ -1,4 +1,4 @@
-package com.apodlatov.test.respak.controllers.dto.incoming;
+package com.apodlatov.test.respak.controllers.api_v1.dto.incoming;
 
 public class UpdateTechnicsTypeDto {
     String name;

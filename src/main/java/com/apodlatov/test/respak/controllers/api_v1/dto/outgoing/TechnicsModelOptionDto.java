@@ -1,4 +1,4 @@
-package com.apodlatov.test.respak.controllers.dto.outgoing;
+package com.apodlatov.test.respak.controllers.api_v1.dto.outgoing;
 
 public class TechnicsModelOptionDto {
     String name;

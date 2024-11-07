@@ -1,11 +1,11 @@
-package com.apodlatov.test.respak.controllers.dto.incoming;
+package com.apodlatov.test.respak.controllers.api_v1.dto.incoming;
 
 import java.util.List;
 
-public class DeleteTechnicsTypesByIdsDto {
+public class GetTechnicsTypesByIdsDto {
     private List<Long> ids;
 
-    public DeleteTechnicsTypesByIdsDto() {
+    public GetTechnicsTypesByIdsDto() {
     }
 
     public List<Long> getIds() {

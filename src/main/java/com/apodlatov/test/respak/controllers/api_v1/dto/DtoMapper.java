@@ -1,9 +1,9 @@
-package com.apodlatov.test.respak.controllers.dto;
+package com.apodlatov.test.respak.controllers.api_v1.dto;
 
-import com.apodlatov.test.respak.controllers.dto.outgoing.TechnicsModelDto;
-import com.apodlatov.test.respak.controllers.dto.outgoing.TechnicsModelOptionDto;
-import com.apodlatov.test.respak.controllers.dto.outgoing.TechnicsTypeDataDto;
-import com.apodlatov.test.respak.controllers.dto.outgoing.TechnicsTypeDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsModelDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsModelOptionDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsTypeDataDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsTypeDto;
 import com.apodlatov.test.respak.data.models.TechnicsModel;
 import com.apodlatov.test.respak.data.models.TechnicsType;
 import com.apodlatov.test.respak.data.models.option.ModelOptionValue;

@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Schema(description = "Данные для запроса поиска моделей в реестре, " +
         "чтобы не использовать свойство (кроме свойств пагинации) " +
@@ -65,6 +66,12 @@ public class RegistryQueryDto {
             defaultValue = "ASC",
             allowableValues = {"ASC", "DESC"})
     String order;
+
+    @Schema(
+            description = "Список значений доп. опций специфичных для для вида техники\n" +
+                    "сейчас поиск реализован по всем опиям в рамках вида техники"
+    )
+    List<String> modelOptionsValuesStrings;
 
     public RegistryQueryDto() {
     }
@@ -144,5 +151,13 @@ public class RegistryQueryDto {
 
     public void setOrder(String order) {
         this.order = order;
+    }
+
+    public List<String> getModelOptionsValuesStrings() {
+        return modelOptionsValuesStrings;
+    }
+
+    public void setModelOptionsValuesStrings(List<String> modelOptionsValuesStrings) {
+        this.modelOptionsValuesStrings = modelOptionsValuesStrings;
     }
 }

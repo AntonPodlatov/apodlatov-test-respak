@@ -2,7 +2,7 @@ package com.apodlatov.test.respak.service;
 
 import com.apodlatov.test.respak.data.models.TechnicsModel;
 import com.apodlatov.test.respak.data.repo.TechnicsModelRepository;
-import com.apodlatov.test.respak.service.api.SearchService;
+import com.apodlatov.test.respak.service.api.RegistryService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-public class SearchServiceImpl implements SearchService {
+public class RegistryServiceImpl implements RegistryService {
     private final TechnicsModelRepository technicsModelRepository;
 
-    public SearchServiceImpl(TechnicsModelRepository technicsModelRepository) {
+    public RegistryServiceImpl(TechnicsModelRepository technicsModelRepository) {
         this.technicsModelRepository = technicsModelRepository;
     }
 
@@ -22,8 +22,11 @@ public class SearchServiceImpl implements SearchService {
     public Page<TechnicsModel> search(
             String technicsModelNameTerm,
             Long colorId, Long technicsTypeId,
-            BigDecimal priceFrom, BigDecimal priceTo, Pageable pageable) {
+            BigDecimal priceFrom, BigDecimal priceTo,
+            List<String> modelOptionValuesString, Pageable pageable) {
+
         return technicsModelRepository.search(
-                technicsModelNameTerm,colorId, technicsTypeId, priceFrom, priceTo, pageable);
+                technicsModelNameTerm,colorId, technicsTypeId,
+                priceFrom, priceTo, modelOptionValuesString, pageable);
     }
 }

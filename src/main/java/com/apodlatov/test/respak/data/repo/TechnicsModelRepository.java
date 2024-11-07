@@ -33,7 +33,11 @@ public interface TechnicsModelRepository
             ") AND (:colorId IS NULL OR c.id = :colorId) " +
             "AND (:technicsTypeId IS NULL OR tt.id = :technicsTypeId) " +
             "AND (:priceFrom IS NULL OR tm.price >= :priceFrom) " +
-            "AND (:priceTo IS NULL OR tm.price <= :priceTo)",
+            "AND (:priceTo IS NULL OR tm.price <= :priceTo)" +
+            "AND (:modelOptionValuesStrings IS NULL " +
+                "OR :modelOptionValuesStrings IS EMPTY ) " +
+                "OR mov.modelOptionValue IN :modelOptionValuesStrings",
+
 
             countQuery = "SELECT COUNT(tm) FROM TechnicsModel tm " +
                     "LEFT JOIN tm.color c " +
@@ -55,5 +59,6 @@ public interface TechnicsModelRepository
             @Param("technicsTypeId") Long technicsTypeId,
             @Param("priceFrom") BigDecimal priceFrom,
             @Param("priceTo") BigDecimal priceTo,
+            @Param("modelOptionValuesStrings") List<String> modelOptionValuesStrings,
             Pageable pageable);
 }

@@ -4,7 +4,7 @@ import com.apodlatov.test.respak.controllers.api_v1.dto.DtoMapper;
 import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.RegistryQueryDto;
 import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsModelDto;
 import com.apodlatov.test.respak.data.models.TechnicsModel;
-import com.apodlatov.test.respak.service.api.SearchService;
+import com.apodlatov.test.respak.service.api.RegistryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -26,10 +26,10 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/api_v1/registry_main/technic_models")
 public class RegistryController {
-    private final SearchService searchService;
+    private final RegistryService searchService;
     private final DtoMapper mapper;
 
-    public RegistryController(SearchService searchService, DtoMapper mapper) {
+    public RegistryController(RegistryService searchService, DtoMapper mapper) {
         this.searchService = searchService;
         this.mapper = mapper;
     }
@@ -75,11 +75,14 @@ public class RegistryController {
                 registryQueryDto.getColorId(),
                 registryQueryDto.getTechnicsTypeId(),
                 registryQueryDto.getPriceFrom(),
-                registryQueryDto.getPriceTo(), PageRequest.of(pageNumber, pageSize, sort));
+                registryQueryDto.getPriceTo(),
+                registryQueryDto.getModelOptionsValuesStrings(),
+                PageRequest.of(pageNumber, pageSize, sort));
 
-        Page<TechnicsModelDto> map = searchResults
-                .map(mapper::mapToTechnicsModelDto);
+        Page<TechnicsModelDto> technicsModelDtoPage =
+                searchResults.map(mapper::mapToTechnicsModelDto);
 
-        return ResponseEntity.ok().body(map);
+        return ResponseEntity.ok()
+                .body(technicsModelDtoPage);
     }
 }

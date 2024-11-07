@@ -4,6 +4,7 @@ import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.*;
 import com.apodlatov.test.respak.data.models.TechnicsModel;
 import com.apodlatov.test.respak.data.models.TechnicsType;
 import com.apodlatov.test.respak.data.models.TechnicsTypeData;
+import com.apodlatov.test.respak.data.models.option.ModelOption;
 import com.apodlatov.test.respak.data.models.option.ModelOptionValue;
 import org.springframework.stereotype.Component;
 
@@ -64,5 +65,14 @@ public class DtoMapper {
         typeDataDto.setId(technicsTypeData.getId());
 
         return typeDataDto;
+    }
+
+    public TechnicsModelOptionDto mapToModelOptionDto(ModelOption technicsTypeData) {
+        TechnicsModelOptionDto dto = new TechnicsModelOptionDto();
+        dto.setModelOptionName(technicsTypeData.getModelOptionName());
+        dto.setTechnicsTypeId(technicsTypeData.getTechnicsType().getId());
+        dto.setId(technicsTypeData.getId());
+
+        return dto;
     }
 }

@@ -2,11 +2,13 @@ package com.apodlatov.test.respak.service;
 
 import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.AddModelOptionValueDto;
 import com.apodlatov.test.respak.data.models.TechnicsModel;
+import com.apodlatov.test.respak.data.models.TechnicsType;
 import com.apodlatov.test.respak.data.models.TechnicsTypeData;
 import com.apodlatov.test.respak.data.models.option.ModelOption;
 import com.apodlatov.test.respak.data.models.option.ModelOptionValue;
 import com.apodlatov.test.respak.data.models.side.data.Color;
 import com.apodlatov.test.respak.data.models.side.data.ModelSize;
+import com.apodlatov.test.respak.data.repo.ModelOptionRepository;
 import com.apodlatov.test.respak.data.repo.ModelOptionValueRepository;
 import com.apodlatov.test.respak.data.repo.TechnicsModelRepository;
 import com.apodlatov.test.respak.service.api.TechnicsModelsService;
@@ -21,14 +23,17 @@ import java.util.List;
 public class TechnicsModelsServiceImpl implements TechnicsModelsService {
     private final ModelOptionValueRepository modelOptionValueRepository;
     private final TechnicsModelRepository technicsModelRepository;
+    private final ModelOptionRepository modelOptionRepository;
     private final EntityManager entityManager;
 
     public TechnicsModelsServiceImpl(
             EntityManager entityManager,
             TechnicsModelRepository technicsModelRepository,
-            ModelOptionValueRepository modelOptionValueRepository) {
+            ModelOptionValueRepository modelOptionValueRepository,
+            ModelOptionRepository modelOptionRepository) {
         this.modelOptionValueRepository = modelOptionValueRepository;
         this.technicsModelRepository = technicsModelRepository;
+        this.modelOptionRepository = modelOptionRepository;
         this.entityManager = entityManager;
     }
 
@@ -92,5 +97,14 @@ public class TechnicsModelsServiceImpl implements TechnicsModelsService {
         }
 
         return newTechnicsModel;
+    }
+
+    @Override
+    public ModelOption addModelOption(Long technicsTypeId, String modelOptionName) {
+        ModelOption modelOption = new ModelOption();
+        modelOption.setModelOptionName(modelOptionName);
+        modelOption.setTechnicsType(entityManager.getReference(TechnicsType.class, technicsTypeId));
+        modelOptionRepository.save(modelOption);
+        return modelOption;
     }
 }

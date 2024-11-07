@@ -1,11 +1,14 @@
 package com.apodlatov.test.respak.controllers.api_v1;
 
 import com.apodlatov.test.respak.controllers.api_v1.dto.DtoMapper;
+import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.AddModelOptionDto;
 import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.AddTechnicsModelDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.AddTechnicsTypeDto;
 import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.GetTechnicsModelsByIdsDto;
-import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.RegistryQueryDto;
 import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsModelDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsModelOptionDto;
 import com.apodlatov.test.respak.data.models.TechnicsModel;
+import com.apodlatov.test.respak.data.models.option.ModelOption;
 import com.apodlatov.test.respak.service.api.TechnicsModelsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -101,5 +104,37 @@ public class TechnicsModelsController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(technicsModelDto);
+    }
+
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Опция создана"),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Невалидный запрос",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")}),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Ошибка сервера",
+                    content = {@Content(mediaType = "application/json;charset=utf-8")})
+    })
+    @Operation(
+            summary = "Создание новой опции модели, специфичной для определенного вида техники",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    content = @Content(
+                            schema = @Schema(
+                                    implementation = AddTechnicsTypeDto.class))))
+    @PostMapping("add_type_option")
+    public ResponseEntity<TechnicsModelOptionDto> addModelOption(
+            @Valid @RequestBody AddModelOptionDto dto) {
+
+        ModelOption modelOption =
+                technicsModelsService.addModelOption(
+                        dto.getTechnicsTypeId(), dto.getModelOptionName());
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(dtoMapper.mapToModelOptionDto(modelOption));
     }
 }

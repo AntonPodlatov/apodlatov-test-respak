@@ -1,32 +1,15 @@
 package com.apodlatov.test.respak.controllers.api_v1.dto.outgoing;
 
-import java.util.List;
-
 public class TechnicsTypeDto {
     private Long id;
     private String name;
-    private List<TechnicsTypeDataDto> technicsTypeDtos;
 
     public TechnicsTypeDto() {
     }
 
-    public TechnicsTypeDto(long id, String name) {
+    public TechnicsTypeDto(Long id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public TechnicsTypeDto(long id, String name, List<TechnicsTypeDataDto> technicsTypeDataDtos) {
-        this.id = id;
-        this.name = name;
-        this.technicsTypeDtos = technicsTypeDataDtos;
-    }
-
-    public List<TechnicsTypeDataDto> getTechnicsTypeDtos() {
-        return technicsTypeDtos;
-    }
-
-    public void setTechnicsTypeDatas(List<TechnicsTypeDataDto> technicsTypeDataDtos) {
-        this.technicsTypeDtos = getTechnicsTypeDtos();
     }
 
     public Long getId() {

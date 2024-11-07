@@ -23,7 +23,7 @@ public class TechnicsTypeData {
 
     @Id
     @Column(name = "ttd_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, name = "ttd_manufacture_country")

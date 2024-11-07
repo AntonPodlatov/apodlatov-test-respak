@@ -18,7 +18,7 @@ import java.util.Objects;
 public class TechnicsTypeCategory {
     @Id
     @Column(name = "ttc_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, name = "ttc_cat_name")

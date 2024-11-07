@@ -17,7 +17,7 @@ import java.util.Objects;
 @Table(name = "models_options_values")
 public class ModelOptionValue {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "models_option_value")

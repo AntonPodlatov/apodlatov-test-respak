@@ -24,7 +24,7 @@ import java.util.Objects;
 public class TechnicsModel {
     @Id
     @Column(name = "tm_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, name = "tm_name")

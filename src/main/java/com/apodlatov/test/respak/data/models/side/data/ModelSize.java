@@ -13,7 +13,7 @@ import java.util.Objects;
 public class ModelSize {
     @Id
     @Column(name = "ms_size_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, name = "ms_size_height")

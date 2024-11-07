@@ -1,4 +1,4 @@
-package com.apodlatov.test.respak.controllers.dto.outgoing;
+package com.apodlatov.test.respak.controllers.api_v1.dto.outgoing;
 
 import com.apodlatov.test.respak.data.models.side.data.Color;
 import com.apodlatov.test.respak.data.models.side.data.ModelSize;

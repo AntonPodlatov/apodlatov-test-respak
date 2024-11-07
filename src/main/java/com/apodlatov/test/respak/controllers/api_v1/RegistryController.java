@@ -1,8 +1,8 @@
-package com.apodlatov.test.respak.controllers;
+package com.apodlatov.test.respak.controllers.api_v1;
 
-import com.apodlatov.test.respak.controllers.dto.DtoMapper;
-import com.apodlatov.test.respak.controllers.dto.incoming.RegistryQueryDto;
-import com.apodlatov.test.respak.controllers.dto.outgoing.TechnicsModelDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.DtoMapper;
+import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.RegistryQueryDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsModelDto;
 import com.apodlatov.test.respak.data.models.TechnicsModel;
 import com.apodlatov.test.respak.service.api.SearchService;
 import org.springframework.data.domain.Page;

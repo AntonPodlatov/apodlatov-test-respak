@@ -1,12 +1,11 @@
-package com.apodlatov.test.respak.controllers;
+package com.apodlatov.test.respak.controllers.api_v1;
 
-import com.apodlatov.test.respak.controllers.dto.DtoMapper;
-import com.apodlatov.test.respak.controllers.dto.incoming.AddTechnicsTypeDto;
-import com.apodlatov.test.respak.controllers.dto.incoming.DeleteTechnicsTypesByIdsDto;
-import com.apodlatov.test.respak.controllers.dto.incoming.GetTechnicsTypesByIdsDto;
-import com.apodlatov.test.respak.controllers.dto.incoming.UpdateTechnicsTypeDto;
-import com.apodlatov.test.respak.controllers.dto.outgoing.TechnicsTypeDataDto;
-import com.apodlatov.test.respak.controllers.dto.outgoing.TechnicsTypeDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.DtoMapper;
+import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.AddTechnicsTypeDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.DeleteTechnicsTypesByIdsDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.GetTechnicsTypesByIdsDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.UpdateTechnicsTypeDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsTypeDto;
 import com.apodlatov.test.respak.data.models.TechnicsType;
 import com.apodlatov.test.respak.service.api.TechnicsTypesService;
 import org.springframework.http.HttpStatus;

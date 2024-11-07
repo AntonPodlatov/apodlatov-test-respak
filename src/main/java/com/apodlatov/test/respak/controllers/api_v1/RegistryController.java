@@ -26,7 +26,7 @@ public class RegistryController {
     }
 
     @PostMapping
-    public ResponseEntity<?> search(@RequestBody RegistryQueryDto registryQueryDto) {
+    public ResponseEntity<Page<TechnicsModelDto>> search(@RequestBody RegistryQueryDto registryQueryDto) {
         String sortBy = registryQueryDto.getSortBy();
         boolean ascending = registryQueryDto.isAscending();
         int pageNumber = registryQueryDto.getPageNumber();

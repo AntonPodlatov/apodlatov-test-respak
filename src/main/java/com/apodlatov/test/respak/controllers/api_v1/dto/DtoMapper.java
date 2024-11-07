@@ -3,6 +3,7 @@ package com.apodlatov.test.respak.controllers.api_v1.dto;
 import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.*;
 import com.apodlatov.test.respak.data.models.TechnicsModel;
 import com.apodlatov.test.respak.data.models.TechnicsType;
+import com.apodlatov.test.respak.data.models.TechnicsTypeData;
 import com.apodlatov.test.respak.data.models.option.ModelOptionValue;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +28,7 @@ public class DtoMapper {
         List<ModelOptionValue> modelOptionsValues = technicsModel.getModelOptionsValues();
 
         if (modelOptionsValues != null) {
-            for (ModelOptionValue optionValue: modelOptionsValues) {
+            for (ModelOptionValue optionValue : modelOptionsValues) {
                 String modelOptionName = optionValue.getModelOption().getModelOptionName();
                 String modelOptionValue = optionValue.getModelOptionValue();
                 dtos.add(new TechnicsModelOptionValueDto(modelOptionName, modelOptionValue));
@@ -45,10 +46,23 @@ public class DtoMapper {
                         .map(TechnicsTypeDataDto::new)
                         .collect(Collectors.toList());
 
-        return new TechnicsTypeWithDatasDto(technicsType.getId(), technicsType.getName(), dtos);
+        return new TechnicsTypeWithDatasDto(
+                technicsType.getId(), technicsType.getName(), dtos);
     }
 
     public TechnicsTypeDto mapToTechnicsTypeDto(TechnicsType technicsType) {
         return new TechnicsTypeDto(technicsType.getId(), technicsType.getName());
+    }
+
+    public TechnicsTypeDataDto mapToTechnicsDataDto(TechnicsTypeData technicsTypeData) {
+        TechnicsTypeDataDto typeDataDto = new TechnicsTypeDataDto();
+
+        typeDataDto.setInstallmentsAvailable(technicsTypeData.isInstallmentsAvailable());
+        typeDataDto.setOnlineOrderAvailable(technicsTypeData.isOnlineOrderAvailable());
+        typeDataDto.setManufactureCountry(technicsTypeData.getManufactureCountry());
+        typeDataDto.setManufacturerName(technicsTypeData.getManufacturerName());
+        typeDataDto.setId(technicsTypeData.getId());
+
+        return typeDataDto;
     }
 }

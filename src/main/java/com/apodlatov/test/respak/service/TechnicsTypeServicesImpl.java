@@ -18,10 +18,6 @@ public class TechnicsTypeServicesImpl implements TechnicsTypesService {
         this.technicsTypeRepository = technicsTypeRepository;
     }
 
-    public List<TechnicsType> getAllTechnicsTypes() {
-        return technicsTypeRepository.findAll();
-    }
-
     public List<TechnicsType> getAllTechnicsWithFullDataTypeById(List<Long> ids) {
         return technicsTypeRepository.fetchAllTechnicsWithFullDataTypeById(ids);
     }

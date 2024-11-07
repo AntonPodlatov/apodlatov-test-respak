@@ -14,7 +14,7 @@ public class TechnicsModelDto {
     private ModelSize modelSize;
     private BigDecimal price;
     private boolean isInStock;
-    private List<TechnicsModelOptionDto> modelOptionsValuesDtos;
+    private List<TechnicsModelOptionValueDto> modelOptionsValuesDtos;
 
     public TechnicsModelDto() {
     }
@@ -23,7 +23,7 @@ public class TechnicsModelDto {
             Long id, String name, Color color,
             String serialNumber, ModelSize modelSize,
             BigDecimal price, boolean isInStock, TechnicsTypeDataDto technicsTypeData,
-            List<TechnicsModelOptionDto> modelOptionsValuesDtos) {
+            List<TechnicsModelOptionValueDto> modelOptionsValuesDtos) {
         this.id = id;
         this.name = name;
         this.color = color;
@@ -90,11 +90,11 @@ public class TechnicsModelDto {
         isInStock = inStock;
     }
 
-    public List<TechnicsModelOptionDto> getModelOptionsValues() {
+    public List<TechnicsModelOptionValueDto> getModelOptionsValues() {
         return modelOptionsValuesDtos;
     }
 
-    public void setModelOptionsValuesDtos(List<TechnicsModelOptionDto> dtos) {
+    public void setModelOptionsValuesDtos(List<TechnicsModelOptionValueDto> dtos) {
         this.modelOptionsValuesDtos = dtos;
     }
 }

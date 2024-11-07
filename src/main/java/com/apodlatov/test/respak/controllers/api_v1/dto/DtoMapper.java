@@ -22,7 +22,7 @@ public class DtoMapper {
         technicsModelDto.setInStock(technicsModel.isInStock());
         technicsModelDto.setSerialNumber(technicsModel.getSerialNumber());
 
-        List<TechnicsModelOptionDto> dtos = new ArrayList<>();
+        List<TechnicsModelOptionValueDto> dtos = new ArrayList<>();
 
         List<ModelOptionValue> modelOptionsValues = technicsModel.getModelOptionsValues();
 
@@ -30,7 +30,7 @@ public class DtoMapper {
             for (ModelOptionValue optionValue: modelOptionsValues) {
                 String modelOptionName = optionValue.getModelOption().getModelOptionName();
                 String modelOptionValue = optionValue.getModelOptionValue();
-                dtos.add(new TechnicsModelOptionDto(modelOptionName, modelOptionValue));
+                dtos.add(new TechnicsModelOptionValueDto(modelOptionName, modelOptionValue));
             }
         }
 

@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Schema(description = "Данные добавления значения опции " +
-        "специфичной для определенной модели техники")
+        "специфичной для определенного вида техники")
 public class AddModelOptionValueDto {
 
     @NotBlank(message = "Обязательное поле.")

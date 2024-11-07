@@ -1,30 +1,34 @@
 package com.apodlatov.test.respak.controllers.api_v1.dto.outgoing;
 
 public class TechnicsModelOptionDto {
-    String name;
-    String value;
+    private Long id;
+    private String modelOptionName;
+    private Long technicsTypeId;
 
     public TechnicsModelOptionDto() {
     }
 
-    public TechnicsModelOptionDto(String modelOptionName, String modelOptionValue) {
-        this.name = modelOptionName;
-        this.value = modelOptionValue;
+    public Long getId() {
+        return id;
     }
 
-    public String getName() {
-        return name;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getModelOptionName() {
+        return modelOptionName;
     }
 
-    public String getValue() {
-        return value;
+    public void setModelOptionName(String modelOptionName) {
+        this.modelOptionName = modelOptionName;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public Long getTechnicsTypeId() {
+        return technicsTypeId;
+    }
+
+    public void setTechnicsTypeId(Long technicsTypeId) {
+        this.technicsTypeId = technicsTypeId;
     }
 }

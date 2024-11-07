@@ -3,6 +3,7 @@ package com.apodlatov.test.respak.controllers.api_v1;
 import com.apodlatov.test.respak.controllers.api_v1.dto.DtoMapper;
 import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.*;
 import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsTypeDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsTypeWithDatasDto;
 import com.apodlatov.test.respak.data.models.TechnicsType;
 import com.apodlatov.test.respak.service.api.TechnicsTypesService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -50,17 +51,17 @@ public class TechnicsTypesController {
 
 
     @Operation(
-            summary = "Получение списка видов техники по списку id",
+            summary = "Получение списка видов техники с вложенными экземплярами вида по списку id",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     content = @Content(
                             schema = @Schema(
                                     implementation = GetTechnicsTypesByIdsDto.class))))
     @PostMapping("get_by_ids")
-    public ResponseEntity<List<TechnicsTypeDto>> getTechnicsTypesByIds(
+    public ResponseEntity<List<TechnicsTypeWithDatasDto>> getTechnicsTypesByIds(
             @Valid @RequestBody GetTechnicsTypesByIdsDto dto) {
-        List<TechnicsTypeDto> dtos = technicsTypeService
+        List<TechnicsTypeWithDatasDto> dtos = technicsTypeService
                 .getAllTechnicsWithFullDataTypeById(dto.getIds()).stream()
-                .map(mapper::mapToTechnicsTypeDto)
+                .map(mapper::mapToTechnicsTypeWithDatasDto)
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(dtos);
@@ -74,14 +75,14 @@ public class TechnicsTypesController {
                             schema = @Schema(
                                     implementation = AddTechnicsTypeDto.class))))
     @PostMapping("add")
-    public ResponseEntity<TechnicsTypeDto> addTechnicsType(
+    public ResponseEntity<TechnicsTypeWithDatasDto> addTechnicsType(
             @Valid @RequestBody AddTechnicsTypeDto dto) {
         TechnicsType newTechnicsType =
                 technicsTypeService.addTechnicsType(dto.getName());
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(new TechnicsTypeDto(
+                .body(new TechnicsTypeWithDatasDto(
                         newTechnicsType.getId(),
                         newTechnicsType.getName()));
     }

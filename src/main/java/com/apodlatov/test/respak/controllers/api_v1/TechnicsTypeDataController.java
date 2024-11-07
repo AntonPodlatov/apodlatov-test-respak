@@ -1,7 +1,9 @@
 package com.apodlatov.test.respak.controllers.api_v1;
 
+import com.apodlatov.test.respak.controllers.api_v1.dto.DtoMapper;
 import com.apodlatov.test.respak.controllers.api_v1.dto.incoming.AddTechnicsTypeDataDto;
-import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsTypeWithDatasDto;
+import com.apodlatov.test.respak.controllers.api_v1.dto.outgoing.TechnicsTypeDataDto;
+import com.apodlatov.test.respak.data.models.TechnicsTypeData;
 import com.apodlatov.test.respak.service.api.TechnicsTypesDataService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -9,6 +11,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,14 +23,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/api_v1/technics_type_data/")
 public class TechnicsTypeDataController {
     private final TechnicsTypesDataService technicsTypesDataService;
+    private final DtoMapper dtoMapper;
 
-    public TechnicsTypeDataController(TechnicsTypesDataService technicsTypesDataService) {
+    public TechnicsTypeDataController(
+            DtoMapper dtoMapper,
+            TechnicsTypesDataService technicsTypesDataService) {
         this.technicsTypesDataService = technicsTypesDataService;
+        this.dtoMapper = dtoMapper;
     }
 
     @ApiResponses({
             @ApiResponse(
-                    responseCode = "200",
+                    responseCode = "201",
                     description = "сущность создана"),
             @ApiResponse(
                     responseCode = "400",
@@ -45,13 +52,19 @@ public class TechnicsTypeDataController {
                             schema = @Schema(
                                     implementation = AddTechnicsTypeDataDto.class))))
     @PostMapping("add")
-    public ResponseEntity<TechnicsTypeWithDatasDto> addTechnicsTypeData(
+    public ResponseEntity<TechnicsTypeDataDto> addTechnicsTypeData(
             @RequestBody AddTechnicsTypeDataDto dto) {
-        technicsTypesDataService.addTechnicsTypeData(
+        TechnicsTypeData technicsTypeData =
+                technicsTypesDataService.addTechnicsTypeData(
                 dto.getTechnicsTypeId(), dto.getManufacturerName(),
                 dto.getManufactureCountry(), dto.isInstallmentsAvailable(),
                 dto.isOnlineOrderAvailable());
 
-        return ResponseEntity.ok().build();
+        TechnicsTypeDataDto technicsTypeDataDto =
+                dtoMapper.mapToTechnicsDataDto(technicsTypeData);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(technicsTypeDataDto);
     }
 }

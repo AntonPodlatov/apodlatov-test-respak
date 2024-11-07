@@ -14,7 +14,7 @@ public class AddModelOptionValueDto {
 
     @NotBlank(message = "Обязательное поле.")
     @Size(min = 1, message = "Значения опции должно быть не менее 1 символа.")
-    @Schema(description = "Значения опции", type = "string")
+    @Schema(description = "Значение опции", type = "string")
     private String modelOptionValue;
 
     @NotNull

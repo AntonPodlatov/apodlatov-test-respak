@@ -3,8 +3,11 @@ package com.apodlatov.test.respak.service;
 import com.apodlatov.test.respak.data.models.TechnicsType;
 import com.apodlatov.test.respak.data.repo.TechnicsTypeRepository;
 import com.apodlatov.test.respak.service.api.TechnicsTypesService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -21,6 +24,11 @@ public class TechnicsTypeServicesImpl implements TechnicsTypesService {
 
     public List<TechnicsType> getAllTechnicsWithFullDataTypeById(List<Long> ids) {
         return technicsTypeRepository.fetchAllTechnicsWithFullDataTypeById(ids);
+    }
+
+    @Override
+    public Page<TechnicsType> getTypesPaged(PageRequest pageRequest) {
+        return technicsTypeRepository.findAll(pageRequest);
     }
 
     @Override

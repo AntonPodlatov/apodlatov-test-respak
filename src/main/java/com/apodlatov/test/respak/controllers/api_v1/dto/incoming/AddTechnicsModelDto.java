@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.List;
@@ -31,12 +30,10 @@ public class AddTechnicsModelDto {
     @Schema(description = "Признак наличия", defaultValue = "false", type = "boolean")
     private boolean isInStock;
 
-    @Null
     @Min(value = 1, message = "id цета должен быть больше нуля.")
     @Schema(description = "Id записи в таблице Цвет", type = "number", defaultValue = "1")
     private Long colorId;
 
-    @Null
     @Min(value = 1, message = "id размеров должен быть больше нуля.")
     @Schema(description = "id записи в таблице Размеры", type = "number", defaultValue = "1")
     private Long modelSizeId;
@@ -46,20 +43,17 @@ public class AddTechnicsModelDto {
     @Schema(description = "id записи в таблице TechnicsTypeData", type = "number", defaultValue = "1")
     private Long technicsTypeDataId;
 
-    @Null(message =
-            "Список значений доп. опций должен содержать значения " +
-            "или быть null или не быть включенным в атрибуты тела запроса")
     @Schema(description = "список значений доп. опций, специфичных для модели техники")
     private List<AddModelOptionValueDto> optionValueDtos;
 
     public AddTechnicsModelDto() {
     }
 
-    public @Null List<AddModelOptionValueDto> getOptionValueDtos() {
+    public List<AddModelOptionValueDto> getOptionValueDtos() {
         return optionValueDtos;
     }
 
-    public void setOptionValueDtos(@Null List<AddModelOptionValueDto> optionValueDtos) {
+    public void setOptionValueDtos(List<AddModelOptionValueDto> optionValueDtos) {
         this.optionValueDtos = optionValueDtos;
     }
 
@@ -96,19 +90,19 @@ public class AddTechnicsModelDto {
         isInStock = inStock;
     }
 
-    public @Null @Min(value = 1, message = "id цета должен быть больше нуля.") Long getColorId() {
+    public @Min(value = 1, message = "id цета должен быть больше нуля.") Long getColorId() {
         return colorId;
     }
 
-    public void setColorId(@Null @Min(value = 1, message = "id цета должен быть больше нуля.") Long colorId) {
+    public void setColorId(@Min(value = 1, message = "id цета должен быть больше нуля.") Long colorId) {
         this.colorId = colorId;
     }
 
-    public @Null @Min(value = 1, message = "id размеров должен быть больше нуля.") Long getModelSizeId() {
+    public @Min(value = 1, message = "id размеров должен быть больше нуля.") Long getModelSizeId() {
         return modelSizeId;
     }
 
-    public void setModelSizeId(@Null @Min(value = 1, message = "id размеров должен быть больше нуля.") Long modelSizeId) {
+    public void setModelSizeId(@Min(value = 1, message = "id размеров должен быть больше нуля.") Long modelSizeId) {
         this.modelSizeId = modelSizeId;
     }
 

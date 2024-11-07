@@ -25,7 +25,13 @@ public class RegistryServiceImpl implements RegistryService {
             BigDecimal priceFrom, BigDecimal priceTo,
             List<String> modelOptionValuesString, Pageable pageable) {
 
-        return technicsModelRepository.search(
+        if (modelOptionValuesString == null || modelOptionValuesString.isEmpty()) {
+            return technicsModelRepository.searchWithoutOptionsValues(
+                    technicsModelNameTerm,colorId, technicsTypeId,
+                    priceFrom, priceTo, pageable);
+        }
+
+        return technicsModelRepository.searchWithOptionsValues(
                 technicsModelNameTerm,colorId, technicsTypeId,
                 priceFrom, priceTo, modelOptionValuesString, pageable);
     }

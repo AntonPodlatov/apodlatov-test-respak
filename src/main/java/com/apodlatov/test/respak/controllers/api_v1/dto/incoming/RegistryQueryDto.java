@@ -4,7 +4,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,28 +12,23 @@ import java.util.List;
         "чтобы не использовать свойство (кроме свойств пагинации) " +
         "можно указать null или не включать свойство в тело запроса.")
 public class RegistryQueryDto {
-    @Null
     @Schema(description = "Регистр-независимая подстрока для поиска моделей техники",
      defaultValue = "a")
     private String technicsModelNameTerm;
     //filters
 
-    @Null
     @Min(value = 1, message = "id вида техники не может быть меньше 1.")
     @Schema(description = "id типа(вида) техники", defaultValue = "1")
     private Long technicsTypeId;
 
-    @Null
     @Min(value = 1, message = "id цвета не может быть меньше 1.")
     @Schema(description = "id цвета техники", defaultValue = "null")
     private Long colorId;
 
-    @Null
     @Min(value = 0, message = "Не меньше 0.")
     @Schema(description = "цена от", defaultValue = "0", type = "number")
     private BigDecimal priceFrom;
 
-    @Null
     @Min(value = 0, message = "Не меньше 0.")
     @Schema(description = "цена до", defaultValue = "9999999999", type = "number")
     private BigDecimal priceTo;

@@ -95,10 +95,9 @@ public class TechnicsTypesController {
         return ResponseEntity.ok(dtos);
     }
 
-
     @ApiResponses({
             @ApiResponse(
-                    responseCode = "200",
+                    responseCode = "201",
                     description = "Вид техники создан"),
             @ApiResponse(
                     responseCode = "400",

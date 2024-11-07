@@ -5,16 +5,22 @@ values (1, 'vacuumCleaner'),
        (4, 'refrigerator'),
        (5, 'tv');
 
+SELECT setval('technics_type_tt_id_seq', 6, true);
+
 INSERT INTO colors (color_id, color_name, color_hex_value)
 VALUES (1, 'white', 'FFFFFF'),
        (2, 'black', '000000'),
        (3, 'silver', 'C0C0C0');
+
+SELECT setval('colors_color_id_seq', 4, true);
 
 insert into technics_types_categories (ttc_id, ttc_cat_name)
 values (1, 'notebook'),
        (2, 'desktopComputer'),
        (3, 'smartTv'),
        (4, 'simpleTv');
+
+SELECT setval('technics_types_categories_ttc_id_seq', 5, true);
 
 insert into technics_types_data (ttd_id,
                                  ttd_is_installments_available,
@@ -42,6 +48,8 @@ values (1, true, false, 'USA', 'Dyson', 1),
        (14, true, false, 'JPN', 'Sony', 5),
        (15, true, false, 'CHI', 'Xiaomi', 5);
 
+SELECT setval('technics_types_data_ttd_id_seq', 16, true);
+
 insert into technics_type_categories (ttd_id, ttc_id)
 values (7, 1),
        (8, 1),
@@ -67,6 +75,8 @@ END;
 $$;
 
 call insert_into_model_sizes();
+
+SELECT setval('model_sizes_ms_size_id_seq', 31, true);
 
 insert into technics_models (tm_id,
                              tm_is_in_stock,
@@ -111,6 +121,8 @@ values (1, true, 'Cyclone V11™ Absolute Extra', 22000, 'CLNCV11', 3, 1, 1),
        (29, true, 'Mi TV 4S', 30000, 'MITV4S', 1, 5, 15),
        (30, true, 'Mi TV 5X', 32000, 'MITV5X', 3, 5, 15);
 
+SELECT setval('technics_models_tm_id_seq', 31, true);
+
 insert into models_options(id, model_option_name, tt_id)
 VALUES (1, 'tvTechnology', 5),        --tv--
        (2, 'dustCollectorVolume', 1), --vacuum cleaner--
@@ -120,6 +132,8 @@ VALUES (1, 'tvTechnology', 5),        --tv--
        (6, 'nemoryGb', 2),            --smartphone--
        (7, 'camerasCount', 2),        --smartphone--
        (8, 'processorType', 3); --computer--
+
+SELECT setval('models_options_id_seq', 9, true);
 
 insert into models_options_values(id, mo_id, models_option_value, tm_id)
 VALUES (1, 1, 'LED', 25),
@@ -176,4 +190,6 @@ VALUES (1, 1, 'LED', 25),
        (45, 8, 'Intel Pentium Silver', 15),
        (46, 8, 'AMD Ryzen 5 5600G, OEM', 16),
        (47, 8, 'AMD Athlon 64', 17),
-       (48, 8, 'Intel Xeon', 18)
+       (48, 8, 'Intel Xeon', 18);
+
+SELECT setval('models_options_values_id_seq', 49, true);

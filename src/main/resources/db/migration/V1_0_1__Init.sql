@@ -131,3 +131,4 @@ ALTER TABLE technics_type_categories
 
 ALTER TABLE technics_models
     ADD CONSTRAINT fkmk6fwpd7d72ekcwnk2c92p9w5 FOREIGN KEY (color_id) REFERENCES colors (color_id) ON DELETE NO ACTION;
+

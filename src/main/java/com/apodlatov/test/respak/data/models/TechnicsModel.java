@@ -49,7 +49,7 @@ public class TechnicsModel {
     @Column(nullable = false, name = "tm_is_in_stock")
     private boolean isInStock = false;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ttd_id")
     private TechnicsTypeData technicsTypeData;
 

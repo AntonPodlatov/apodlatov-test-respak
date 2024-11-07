@@ -24,10 +24,14 @@ public class DtoMapper {
 
         List<TechnicsModelOptionDto> dtos = new ArrayList<>();
 
-        for (ModelOptionValue optionValue: technicsModel.getModelOptionsValues()) {
-            String modelOptionName = optionValue.getModelOption().getModelOptionName();
-            String modelOptionValue = optionValue.getModelOptionValue();
-            dtos.add(new TechnicsModelOptionDto(modelOptionName, modelOptionValue));
+        List<ModelOptionValue> modelOptionsValues = technicsModel.getModelOptionsValues();
+
+        if (modelOptionsValues != null) {
+            for (ModelOptionValue optionValue: modelOptionsValues) {
+                String modelOptionName = optionValue.getModelOption().getModelOptionName();
+                String modelOptionValue = optionValue.getModelOptionValue();
+                dtos.add(new TechnicsModelOptionDto(modelOptionName, modelOptionValue));
+            }
         }
 
         technicsModelDto.setModelOptionsValuesDtos(dtos);

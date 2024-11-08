@@ -16,6 +16,7 @@ gradle (проверялось на Gradle 8.10.2)
     `$ docker-compose up`
     
 4. запуск приложения из корня проекта:
+
    `$ java -jar build/libs/apodlatov-test-respak-0.0.1.jar`
 
 5. http://localhost:8091/swagger-ui/index.html

@@ -28,8 +28,9 @@ public interface TechnicsModelRepository
             "LEFT JOIN FETCH ttd.technicsType tt " +
             "LEFT JOIN FETCH tm.modelOptionsValues mov " +
             "LEFT JOIN FETCH mov.modelOption " +
-            "WHERE (:technicsModelNameTerm IS NULL OR :technicsModelNameTerm = '' OR " +
-                    "LOWER(tm.name) LIKE '%'+lower(:technicsModelNameTerm)+'%') " +
+            "WHERE (:technicsModelNameTerm IS NULL " +
+                    "OR :technicsModelNameTerm = '' " +
+                    "OR LOWER(tm.name) LIKE CONCAT('%', lower(:technicsModelNameTerm),'%')) " +
             "AND (:colorId IS NULL OR c.id = :colorId) " +
             "AND (:technicsTypeId IS NULL OR tt.id = :technicsTypeId) " +
             "AND (:priceFrom IS NULL OR tm.price >= :priceFrom) " +
@@ -45,7 +46,7 @@ public interface TechnicsModelRepository
                     "LEFT JOIN mov.modelOption " +
                     "WHERE (:technicsModelNameTerm IS NULL " +
                             "OR :technicsModelNameTerm = '' " +
-                            "OR LOWER(tm.name) LIKE '%'+lower(:technicsModelNameTerm)+'%')" +
+                            "OR LOWER(tm.name) LIKE CONCAT('%', lower(:technicsModelNameTerm),'%')) " +
                     "AND (:colorId IS NULL OR c.id = :colorId) " +
                     "AND (:technicsTypeId IS NULL OR tt.id = :technicsTypeId) " +
                     "AND (:priceFrom IS NULL OR tm.price >= :priceFrom) " +
@@ -69,7 +70,7 @@ public interface TechnicsModelRepository
             "LEFT JOIN FETCH tm.modelOptionsValues mov " +
             "LEFT JOIN FETCH mov.modelOption " +
             "WHERE (:technicsModelNameTerm IS NULL OR :technicsModelNameTerm = '' OR " +
-            "lower(tm.name) LIKE '%'+lower(:technicsModelNameTerm)+'%') " +
+                    "LOWER(tm.name) LIKE CONCAT('%', lower(:technicsModelNameTerm),'%')) " +
             "AND (:colorId IS NULL OR c.id = :colorId) " +
             "AND (:technicsTypeId IS NULL OR tt.id = :technicsTypeId) " +
             "AND (:priceFrom IS NULL OR tm.price >= :priceFrom) " +
@@ -82,7 +83,7 @@ public interface TechnicsModelRepository
                     "LEFT JOIN tm.modelOptionsValues mov " +
                     "LEFT JOIN mov.modelOption " +
                     "WHERE (:technicsModelNameTerm IS NULL OR :technicsModelNameTerm = '' OR " +
-                    "lower(tm.name) LIKE '%'+lower(:technicsModelNameTerm)+'%') " +
+                    "LOWER(tm.name) LIKE CONCAT('%', lower(:technicsModelNameTerm),'%')) " +
                     "AND (:colorId IS NULL OR c.id = :colorId) " +
                     "AND (:technicsTypeId IS NULL OR tt.id = :technicsTypeId) " +
                     "AND (:priceFrom IS NULL OR tm.price >= :priceFrom) " +

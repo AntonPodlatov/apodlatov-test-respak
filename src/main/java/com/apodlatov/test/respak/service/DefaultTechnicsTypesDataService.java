@@ -4,6 +4,8 @@ import com.apodlatov.test.respak.data.models.TechnicsType;
 import com.apodlatov.test.respak.data.models.TechnicsTypeData;
 import com.apodlatov.test.respak.data.repo.TechnicsTypeDataRepository;
 import com.apodlatov.test.respak.service.api.TechnicsTypesDataService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -33,5 +35,10 @@ public class DefaultTechnicsTypesDataService implements TechnicsTypesDataService
         technicsTypeData.setOnlineOrderAvailable(onlineOrderAvailable);
 
         return technicsTypeDataRepository.save(technicsTypeData);
+    }
+
+    public Page<TechnicsTypeData> getPaged(long technicsTypeId, Pageable pageable) {
+        return technicsTypeDataRepository.findPagedAndFilterByTypeIdIdNeeded(
+                technicsTypeId, pageable);
     }
 }

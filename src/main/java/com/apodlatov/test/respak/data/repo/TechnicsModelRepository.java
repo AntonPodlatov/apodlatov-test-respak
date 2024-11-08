@@ -43,9 +43,10 @@ public interface TechnicsModelRepository
                     "LEFT JOIN ttd.technicsType tt " +
                     "LEFT JOIN tm.modelOptionsValues mov " +
                     "LEFT JOIN mov.modelOption " +
-                    "WHERE (:technicsModelNameTerm IS NULL OR :technicsModelNameTerm = '' OR " +
-                    "LOWER(tm.name) LIKE '%'+lower(:technicsModelNameTerm)+'%')" +
-                    ") AND (:colorId IS NULL OR c.id = :colorId) " +
+                    "WHERE (:technicsModelNameTerm IS NULL " +
+                            "OR :technicsModelNameTerm = '' " +
+                            "OR LOWER(tm.name) LIKE '%'+lower(:technicsModelNameTerm)+'%')" +
+                    "AND (:colorId IS NULL OR c.id = :colorId) " +
                     "AND (:technicsTypeId IS NULL OR tt.id = :technicsTypeId) " +
                     "AND (:priceFrom IS NULL OR tm.price >= :priceFrom) " +
                     "AND (:priceTo IS NULL OR tm.price <= :priceTo) " +

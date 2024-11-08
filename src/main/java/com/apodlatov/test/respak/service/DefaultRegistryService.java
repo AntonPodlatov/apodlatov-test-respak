@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-public class RegistryServiceImpl implements RegistryService {
+public class DefaultRegistryService implements RegistryService {
     private final TechnicsModelRepository technicsModelRepository;
 
-    public RegistryServiceImpl(TechnicsModelRepository technicsModelRepository) {
+    public DefaultRegistryService(TechnicsModelRepository technicsModelRepository) {
         this.technicsModelRepository = technicsModelRepository;
     }
 

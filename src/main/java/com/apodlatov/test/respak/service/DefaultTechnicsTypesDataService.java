@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 
 @Service
-public class TechnicsTypesDataServiceImpl implements TechnicsTypesDataService {
+public class DefaultTechnicsTypesDataService implements TechnicsTypesDataService {
     private final TechnicsTypeDataRepository technicsTypeDataRepository;
     private final EntityManager entityManager;
 
-    public TechnicsTypesDataServiceImpl(
+    public DefaultTechnicsTypesDataService(
             EntityManager entityManager,
             TechnicsTypeDataRepository technicsTypeDataRepository) {
         this.technicsTypeDataRepository = technicsTypeDataRepository;

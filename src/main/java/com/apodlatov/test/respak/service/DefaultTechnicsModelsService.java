@@ -20,13 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class TechnicsModelsServiceImpl implements TechnicsModelsService {
+public class DefaultTechnicsModelsService implements TechnicsModelsService {
     private final ModelOptionValueRepository modelOptionValueRepository;
     private final TechnicsModelRepository technicsModelRepository;
     private final ModelOptionRepository modelOptionRepository;
     private final EntityManager entityManager;
 
-    public TechnicsModelsServiceImpl(
+    public DefaultTechnicsModelsService(
             EntityManager entityManager,
             TechnicsModelRepository technicsModelRepository,
             ModelOptionValueRepository modelOptionValueRepository,

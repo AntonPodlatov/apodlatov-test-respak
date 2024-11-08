@@ -7,14 +7,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service
-public class TechnicsTypeServicesImpl implements TechnicsTypesService {
+public class DefaultTechnicsTypeServices implements TechnicsTypesService {
     private final TechnicsTypeRepository technicsTypeRepository;
 
-    public TechnicsTypeServicesImpl(TechnicsTypeRepository technicsTypeRepository) {
+    public DefaultTechnicsTypeServices(TechnicsTypeRepository technicsTypeRepository) {
         this.technicsTypeRepository = technicsTypeRepository;
     }
 
